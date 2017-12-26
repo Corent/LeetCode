@@ -1,4 +1,4 @@
-package com.sven.problem;
+package com.sven.algorithm001;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -12,6 +12,9 @@ public class Algorithm001 {
     }
 }
 
+/**
+ * Map<Integer, Integer> key = target - nums[value] 遍历一次
+ */
 class Solution {
     public int[] twoSum(int[] nums, int target) {
         if (nums == null || nums.length < 2) return new int[] {};
