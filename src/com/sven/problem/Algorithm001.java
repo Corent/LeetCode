@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class lgAorithm001 {
+public class Algorithm001 {
 
     public static void main(String[] args) {
         int[] result = new Solution().twoSum(new int[] {3, 2, 4}, 6);
