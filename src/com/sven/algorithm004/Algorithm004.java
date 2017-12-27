@@ -5,7 +5,7 @@ public class Algorithm004 {
 
 /**
  * https://www.cnblogs.com/springfor/p/3861890.html
- * 装换为查找两个排序数组第K大的数的问题
+ * 转化为查找两个排序数组第K大的数的问题
  */
 class Solution {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
