@@ -20,7 +20,7 @@ class Solution {
                 list.add(nums[i]);
                 list.add(nums[j]);
                 ans.add(list);
-                while (i < j && nums[i] == nums[i + 1]) i++;
+                while (i < j && nums[i] == nums[i + 1]) i++;    //左右两端都跳过相同的
                 while (i < j && nums[j] == nums[j - 1]) j--;
                 i++;
                 j--;
@@ -33,12 +33,9 @@ class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> ans = new ArrayList<>();
         if (nums == null || nums.length < 3) return ans;
-        List<Integer> list = new ArrayList<>();
-        for (Integer n: nums) list.add(n);
-        Collections.sort(list);
-        for (int m = 0; m < nums.length; m++) nums[m] = list.get(m);
+        Arrays.sort(nums);
         for (int i = 0; i < nums.length - 2; i++) {
-            if (i > 0 && nums[i] == nums[i - 1]) continue;
+            if (i > 0 && nums[i] == nums[i - 1]) continue;  //跳过相同的
             List<List<Integer>> tmp = twoSum(nums, i + 1, -nums[i]);
             if (tmp.isEmpty()) continue;
             for (List<Integer> t: tmp) {
