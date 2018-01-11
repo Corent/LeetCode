@@ -18,29 +18,19 @@ class Solution {
     }
 
     public boolean isValidSudoku(char[][] board) {
-        boolean[] visited = new boolean[9];
+        boolean[][] visited = new boolean[3][9];
 
         for (int i = 0; i < 9; i++) {
-            Arrays.fill(visited, false);
+            Arrays.fill(visited[0], false);
+            Arrays.fill(visited[1], false);
+            Arrays.fill(visited[2], false);
+            int m = (i / 3) * 3, n = (i % 3) * 3;
             for (int j = 0; j < 9; j++) {
-                if (!isValid(visited, board[i][j]))
+                if (!isValid(visited[0], board[i][j]))
                     return false;
-            }
-        }
-
-        for (int j = 0; j < 9; j++) {
-            Arrays.fill(visited, false);
-            for (int i = 0; i < 9; i++) {
-                if (!isValid(visited, board[i][j]))
+                if (!isValid(visited[1], board[j][i]))
                     return false;
-            }
-        }
-
-        for (int m = 0; m < 9; m++) {
-            Arrays.fill(visited, false);
-            int i = (m / 3) * 3, j = (m % 3) * 3;
-            for (int n = 0; n < 9; n++) {
-                if (!isValid(visited, board[i + n / 3][j + n % 3]))
+                if (!isValid(visited[2], board[m + j / 3][n + j % 3]))
                     return false;
             }
         }
