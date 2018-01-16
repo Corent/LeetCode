@@ -9,6 +9,9 @@ public class Algorithm049 {
     }
 }
 
+/**
+ * 太简单就不解释了，这种方法效率低
+ */
 class Solution {
     public List<List<String>> groupAnagrams(String[] strs) {
         List<List<String>> ans = new ArrayList<>();

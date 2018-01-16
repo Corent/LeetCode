@@ -55,6 +55,9 @@ class Solution {
     }
 }
 
+/**
+ * 递归回溯，两两交换
+ */
 class Solution2 {
 
     private List<List<Integer>> ans = new ArrayList<>();

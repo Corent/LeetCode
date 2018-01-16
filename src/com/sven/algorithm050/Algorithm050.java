@@ -3,6 +3,9 @@ package com.sven.algorithm050;
 public class Algorithm050 {
 }
 
+/**
+ * 转为正整数指数
+ */
 class Solution {
     public double myPow(double x, int n) {
         if (equal(x, 0.0) && n < 0) return 0.0;

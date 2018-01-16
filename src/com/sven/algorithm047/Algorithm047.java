@@ -5,6 +5,9 @@ import java.util.*;
 public class Algorithm047 {
 }
 
+/**
+ * 参考Algorithm046，加入结果集的时候加个校验，但这种方法效率低
+ */
 class Solution {
 
     public List<List<Integer>> permuteUnique(int[] nums) {
