@@ -7,7 +7,7 @@ package com.sven.algorithm063;
  * @author: sven
  * @date: 09/02/2018
  */
-public class Algorithm064 {
+public class Algorithm063 {
 }
 
 /**
