@@ -21,7 +21,7 @@ public class Algorithm {
         List<String> ans = new ArrayList<String>(k);
 
         //统计词频
-        Map<String, Integer> map = new HashMap<String, Integer);
+        Map<String, Integer> map = new HashMap<String, Integer>();
         for (String s: words) {
             int cnt = map.containsKey(s)? map.get(s): 0;
             map.put(s, cnt + 1);
@@ -74,7 +74,7 @@ public class Algorithm {
         while (num > 0) {
             int n = num % 10000; //3456
             num /= 10000;
-            builder.append(hanzi[level];
+            builder.append(hanzi[level]);
             int indent = 0;
             while (n > 0) {    //1. 六十五百四千三 2. 六十五百四千三万十二一
                 builder.append(hanzi[indent]).append(shuzi[n % 10]); // 1. n=345 builder="六" 2. n=34 bu
