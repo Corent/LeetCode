@@ -6,6 +6,10 @@ import java.util.List;
 public class Algorithm132 {
 }
 
+/**
+ * isPalin[i][j]表示子串s[i-j]是否是回文
+ * dp[i]表示以i位置为结尾的子串的最小切割数
+ */
 class Solution {
     public int minCut(String s) {
         if (s == null || s.length() == 0) return 0;
