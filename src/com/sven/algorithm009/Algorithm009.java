@@ -13,7 +13,6 @@ class Solution {
             reverse = reverse * 10 + x % 10;
             x = x / 10;
         }
-        if (x == reverse || x == reverse / 10) return true;
-        return false;
+        return x == reverse || x == reverse / 10;
     }
 }

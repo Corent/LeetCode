@@ -12,7 +12,7 @@ public class Algorithm162 {
 
 class Solution {
     public int findPeakElement(int[] nums) {
-        int l = 0, r = nums.length  -1;
+        int l = 0, r = nums.length - 1;
         while (l <= r) {
             if (l == r) return l;
             int mid = (l + r) / 2;

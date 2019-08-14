@@ -14,11 +14,13 @@ class Solution {
     private boolean helper(String s, String p, int i, int j) {
         if (j == p.length()) return i == s.length();
 
+        // 1. p[j+1] != '*' 的情况
         if (j == p.length() - 1 || p.charAt(j + 1) != '*') {    //p[j+1]不可能是*，要么j已经是最后一个字符要么j+1字符不是*
             if (i == s.length() || (s.charAt(i) != p.charAt(j) && p.charAt(j) != '.')) return false;    //s已经遍历到尾，或者s[i]与p[j]不匹配
             else return helper(s, p, i + 1, j + 1);
         }
 
+        // 2. p[j+1] == '*' 的情况
         while (i < s.length() && (s.charAt(i) == p.charAt(j) || p.charAt(j) == '.')) {  //p[j+1]=='*'
             if (helper(s, p, i, j + 2)) return true;
             i++;

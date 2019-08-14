@@ -36,3 +36,30 @@ class Solution {
         return result;
     }
 }
+
+/**
+ * 动态规划法，反方向也可以
+ */
+class Solution2 {
+    public String longestPalindrome(String s) {
+        if (s == null || s.length() < 2) return s;
+        int m = s.length(), maxLen = 0;
+        String result = "";
+        boolean[][] isPalindrome = new boolean[m][m];
+        for (int i = 0; i < m; i++) {
+            for (int j = i; j >= 0; j--) {
+                int len = i - j + 1;
+                if (s.charAt(i) == s.charAt(j) && (len <= 3 || isPalindrome[i - 1][j + 1])) {
+                    isPalindrome[i][j] = true;
+                    if (len > maxLen) {
+                        maxLen = len;
+                        result = s.substring(j, i + 1);
+                    }
+                } else {
+                    isPalindrome[i][j] = false;
+                }
+            }
+        }
+        return result;
+    }
+}
