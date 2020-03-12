@@ -10,15 +10,12 @@ class Solution {
 
     private int n;
     private int[] nums;
-    private char[] ch;
     private int cnt;
 
     public int totalNQueens(int n) {
         this.n = n;
         this.nums = new int[n];
-        this.ch = new char[n];
         for (int i = 0; i < n; i++) nums[i] = i;
-        Arrays.fill(ch, '.');
         core(0);
         return cnt;
     }

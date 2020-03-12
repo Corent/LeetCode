@@ -34,3 +34,21 @@ class Solution {
         return ans;
     }
 }
+
+class Solution2 {
+    public ListNode deleteDuplicates(ListNode head) {
+        ListNode node = head, root = new ListNode(0);
+        ListNode tmp = root;
+        while (node != null && node.next != null) {
+            if (node.val == node.next.val) {
+                while (node.next != null && node.val == node.next.val) node = node.next;
+            } else {
+                tmp.next = node;
+                tmp = tmp.next;
+                node = node.next;
+            }
+        }
+        tmp.next = node;
+        return root.next;
+    }
+}

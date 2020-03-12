@@ -31,7 +31,7 @@ class Solution {
     private void pick(int from, int k) {
         if (nums.length - from < k) return;
         if (k == 0) {
-            ans.add(new ArrayList<Integer>(current));
+            ans.add(new ArrayList<>(current));
             return;
         }
 

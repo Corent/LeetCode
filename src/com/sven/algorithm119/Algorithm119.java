@@ -1,7 +1,9 @@
 package com.sven.algorithm119;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Copyright (C) 1998 - 2018 SOHU Inc., All Rights Reserved.
@@ -30,5 +32,19 @@ class Solution {
             idxRow++;
         }
         return ans;
+    }
+}
+
+class Solution2 {
+    public List<Integer> getRow(int rowIndex) {
+        Integer[] nums = new Integer[rowIndex + 1];
+        nums[0] = 1;
+        for (int idx = 1; idx <= rowIndex; idx++) {
+            nums[idx] = 1;
+            for (int rowIdx = idx - 1; rowIdx > 0; rowIdx--) {
+                nums[rowIdx] += nums[rowIdx - 1];
+            }
+        }
+        return Arrays.asList(nums);
     }
 }

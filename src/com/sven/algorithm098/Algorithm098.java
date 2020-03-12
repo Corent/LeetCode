@@ -21,7 +21,7 @@ class TreeNode {
 }
 
 /**
- * 中序遍历结果是有序数列
+ * 中序遍历结果是有序数列，遍历的同时可以进行判断
  */
 class Solution {
 
@@ -33,6 +33,21 @@ class Solution {
             int cnt = vals.size();
             if (cnt == 0 || root.val > vals.get(cnt - 1)) {
                 vals.add(root.val);
+                return isValidBST(root.right);
+            } else return false;
+        } else return false;
+    }
+}
+
+class Solution2 {
+
+    private Integer previous = null;
+
+    public boolean isValidBST(TreeNode root) {
+        if (root == null) return true;
+        if (isValidBST(root.left)) {
+            if (previous == null || root.val > previous) {
+                previous = root.val;
                 return isValidBST(root.right);
             } else return false;
         } else return false;

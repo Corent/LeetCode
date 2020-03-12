@@ -51,3 +51,14 @@ class Solution {
         return i + 1;
     }
 }
+
+class Solution2 {
+    public List<Integer> grayCode(int n) {
+        List<Integer> ans = new ArrayList<>();
+        int cnt = Double.valueOf(Math.pow(2, n)).intValue();
+        for (int i = 0; i < cnt; i++) {
+            ans.add((i >> 1) ^ i);
+        }
+        return ans;
+    }
+}

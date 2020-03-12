@@ -30,7 +30,7 @@ class Solution {
                     dp[i][j] = dp[i][j - 1] && s2.charAt(j - 1) == s3.charAt(j - 1);
                 } else {
                     dp[i][j] = dp[i - 1][j] && s1.charAt(i - 1) == s3.charAt(i + j - 1) ||
-                            dp[i][j - 1] && s2.charAt(j - 1) == s3.charAt(i + j  -1);
+                            dp[i][j - 1] && s2.charAt(j - 1) == s3.charAt(i + j - 1);
                 }
             }
         }

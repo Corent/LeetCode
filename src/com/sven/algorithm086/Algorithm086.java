@@ -41,3 +41,27 @@ class Solution {
         return root.next;
     }
 }
+
+/**
+ * https://www.cnblogs.com/ariel-dreamland/p/9159367.html
+ */
+class Solution2 {
+    public ListNode partition(ListNode head, int x) {
+        if (head == null) return null;
+        ListNode root = new ListNode(-1), newRoot = new ListNode(-1);
+        root.next = head;
+        ListNode cur = root, cur1 = newRoot;
+        while (cur.next != null) {
+            if (cur.next.val < x) {
+                cur1.next = cur.next;
+                cur1 = cur1.next;
+                cur.next = cur.next.next;
+                cur1.next = null;
+            } else {
+                cur = cur.next;
+            }
+        }
+        cur1.next = root.next;
+        return newRoot.next;
+    }
+}

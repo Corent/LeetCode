@@ -5,6 +5,10 @@ import java.util.Arrays;
 public class Algorithm043 {
 }
 
+/**
+ * 高位向低位退位
+ */
+
 class Solution {
     public String multiply(String num1, String num2) {
         if (num1 == null || num1.length() < 1 || num1.equals("0") ||

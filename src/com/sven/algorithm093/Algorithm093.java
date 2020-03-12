@@ -27,7 +27,7 @@ class Solution {
 
     private void restoreIpAddressesCore(String s, int idx) {
         int cnt = 4 - ip.size();
-        if (s  == null || s.isEmpty()
+        if (s == null || s.isEmpty()
                 || s.length() - idx < cnt || s.length() - idx > cnt * 4
                 || !(cnt >= 0 && cnt <= 4))
             return;

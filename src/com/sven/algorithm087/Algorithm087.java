@@ -35,7 +35,7 @@ class Solution {
                 s21 = s2.substring(0, len2 - i);
                 s22 = s2.substring(len2 - i);
                 ans = isScramble(s11, s22) && isScramble(s12, s21);
-            }
+            }  else break;
         }
         return ans;
     }

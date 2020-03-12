@@ -14,10 +14,11 @@ class Solution {
     public String minWindow(String s, String t) {
         String ans = "";
         int[] tHash = new int[256];
+        char[] chs = s.toCharArray();
         int ansLen = Integer.MAX_VALUE, tLen = t.length(), tInWinCnt = 0;
         for (char c: t.toCharArray()) tHash[c]++;
         for (int winStart = 0, winEnd = 0; winEnd < s.length(); winEnd++) {
-            char endCh = s.charAt(winEnd);
+            char endCh = chs[winEnd];
             if (tHash[endCh] > 0) tInWinCnt++;
             tHash[endCh]--;
             while (tInWinCnt >= tLen) {
@@ -26,7 +27,7 @@ class Solution {
                     ansLen = winLen;
                     ans = s.substring(winStart, winEnd + 1);
                 }
-                char startCh = s.charAt(winStart);
+                char startCh = chs[winStart];
                 tHash[startCh]++;
                 if (tHash[startCh] > 0) tInWinCnt--;
                 winStart++;

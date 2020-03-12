@@ -10,6 +10,7 @@ package com.sven.algorithm075;
 public class Algorithm075 {
 }
 
+// 从左往右
 class Solution {
 
     public void sortColors(int[] nums) {
@@ -25,6 +26,36 @@ class Solution {
                     break;
                 case 2:
                     swap(nums, --idx2, idx);
+                    break;
+                default: break;
+            }
+        }
+    }
+
+    private void swap(int[] nums, int a, int b) {
+        if (a == b) return;
+        nums[a] = nums[a] ^ nums[b];
+        nums[b] = nums[a] ^ nums[b];
+        nums[a] = nums[a] ^ nums[b];
+    }
+}
+
+// 从右往左
+class Solution1 {
+
+    public void sortColors(int[] nums) {
+        if (nums == null || nums.length < 2) return;
+        int idx0 = -1, idx2 = nums.length, idx = nums.length - 1;
+        while (idx > idx0) {
+            switch (nums[idx]) {
+                case 0:
+                    swap(nums, ++idx0, idx);
+                    break;
+                case 1:
+                    idx--;
+                    break;
+                case 2:
+                    swap(nums, --idx2, idx--);
                     break;
                 default: break;
             }

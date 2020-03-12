@@ -25,6 +25,7 @@ class Solution {
     }
 
     private void swap(int[] nums, int i, int j) {
+        if (i == j) return;
         int tmp = nums[i];
         nums[i] = nums[j];
         nums[j] = tmp;
@@ -60,14 +61,16 @@ class Solution {
  */
 class Solution2 {
 
+    private int[] nums;
     private List<List<Integer>> ans = new ArrayList<>();
 
     public List<List<Integer>> permute(int[] nums) {
-        permute(nums, 0);
+        this.nums = nums;
+        permute(0);
         return ans;
     }
 
-    private void permute(int[] nums, int first) {
+    private void permute(int first) {
         if (first == nums.length - 1) {
             List<Integer> permutation = new ArrayList<>();
             for (int n: nums) permutation.add(n);
@@ -76,13 +79,14 @@ class Solution2 {
         }
 
         for (int i = first; i < nums.length; i++) {
-            swap(nums, first, i);
-            permute(nums, first + 1);
-            swap(nums, first, i);
+            swap(first, i);
+            permute(first + 1);
+            swap(first, i);
         }
     }
 
-    private void swap(int[] nums, int i, int j) {
+    private void swap(int i, int j) {
+        if (i == j) return;
         int tmp = nums[i];
         nums[i] = nums[j];
         nums[j] = tmp;

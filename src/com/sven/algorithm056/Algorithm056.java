@@ -24,11 +24,21 @@ public class Algorithm056 {
     }
 }
 
-class Interval {
+class Interval implements Comparable<Interval> {
     int start;
     int end;
     Interval() { start = 0; end = 0; }
     Interval(int s, int e) { start = s; end = e; }
+    Interval(int[] nums) {
+        start = nums[0];
+        end = nums[1];
+    }
+
+    @Override
+    public int compareTo(Interval o) {
+        if (start != o.start) return Integer.valueOf(start).compareTo(o.start);
+        return Integer.valueOf(end).compareTo(o.end);
+    }
 }
 
 /**
@@ -68,6 +78,38 @@ class Solution {
                     break;
                 }
             }
+        }
+        return ans;
+    }
+}
+
+class Solution2 {
+    public int[][] merge(int[][] intervals) {
+        if (intervals == null) return null;
+        LinkedList<Interval> intervalList = new LinkedList<>();
+        List<Interval> finalIntervalList = new ArrayList<>();
+        Arrays.stream(intervals).forEach(i -> intervalList.add(new Interval(i)));
+        Collections.sort(intervalList);
+        Interval current = null;
+        while (!intervalList.isEmpty()) {
+            if (current == null) {
+                current = intervalList.pollFirst();
+                continue;
+            }
+
+            if (current.end >= intervalList.peekFirst().start) {
+                Interval next = intervalList.pollFirst();
+                current.end = Math.max(current.end, next.end);
+            } else {
+                finalIntervalList.add(current);
+                current = null;
+            }
+        }
+        if (current != null) finalIntervalList.add(current);
+        int[][] ans = new int[finalIntervalList.size()][2];
+        for (int i = 0; i < finalIntervalList.size(); i++) {
+            Interval interval = finalIntervalList.get(i);
+            ans[i] = new int[] { interval.start, interval.end };
         }
         return ans;
     }

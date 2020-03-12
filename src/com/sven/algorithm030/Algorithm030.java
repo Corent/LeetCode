@@ -15,6 +15,7 @@ public class Algorithm030 {
  */
 class Solution {
     public List<Integer> findSubstring(String s, String[] words) {
+        if ("".equals(s) || words.length == 0) return new ArrayList<>();
         List<Integer> ans = new ArrayList<>();
         if (s == null) return ans;
         int sLen = s.length(), wLen = words[0].length(), wsLen = words[0].length() * words.length;

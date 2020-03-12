@@ -35,11 +35,45 @@ class Solution {
             String s = current.stream().map(String::valueOf).reduce("", (a, b) -> a + "|" + b);
             if (set.contains(s)) return;
             set.add(s);
-            ans.add(new ArrayList<Integer>(current));
+            ans.add(new ArrayList<>(current));
             return;
         }
 
         for (int i = from; i < nums.length; i++) {
+            current.add(nums[i]);
+            pick(i + 1, k - 1);
+            current.remove(current.size() - 1);
+        }
+    }
+}
+
+class Solution2 {
+
+    private int[] nums;
+    private List<Integer> current;
+    private List<List<Integer>> ans;
+
+    public List<List<Integer>> subsetsWithDup(int[] nums) {
+        Arrays.sort(nums);
+        this.nums = nums;
+        current = new ArrayList<>();
+        ans = new ArrayList<>();
+        for (int i = 0; i <= nums.length; i++) pick(0, i);
+        return ans;
+    }
+
+    private void pick(int from, int k) {
+        if (nums.length - from < k) return;
+        if (k == 0) {
+            ans.add(new ArrayList<>(current));
+            return;
+        }
+
+        for (int i = from; i < nums.length; i++) {
+
+            // Important!!!
+            if (i != from && nums[i - 1] == nums[i]) continue;;
+
             current.add(nums[i]);
             pick(i + 1, k - 1);
             current.remove(current.size() - 1);

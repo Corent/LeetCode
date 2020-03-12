@@ -12,7 +12,7 @@ public class Algorithm008 {
  */
 class Solution {
     public int myAtoi(String str) {
-        if (str == null || str.length() == 0) return 0;
+        if (str == null || str.length() == 0 || str.trim().length() == 0) return 0;
 		char[] ch = str.toCharArray();
         int length = str.length();
         int sign = 1;

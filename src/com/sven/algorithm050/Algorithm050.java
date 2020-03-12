@@ -14,12 +14,13 @@ class Solution {
         return n < 0 ? 1.0 / result : result;
     }
 
-    double myPowWithUnsignedExponent(double base, long exponent) {
+    // 二分法
+    private double myPowWithUnsignedExponent(double base, long exponent) {
         if (exponent == 0) return 1;
         if (exponent == 1) return base;
         double result = myPowWithUnsignedExponent(base, exponent >> 1);
         result *= result;
-        if ((exponent & 0x1) == 1) result *= base;
+        if ((exponent & 0x1) == 1) result *= base;  // 注意奇数的情况
         return result;
     }
 

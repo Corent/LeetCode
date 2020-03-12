@@ -1,16 +1,15 @@
 package com.sven.algorithm049;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Algorithm049 {
 
-    public static void main(String[] args) {
-        System.out.println(new Solution().getKey("abc"));
-    }
+    public static void main(String[] args) {}
 }
 
 /**
- * 太简单就不解释了，这种方法效率低
+ * 效率低
  */
 class Solution {
     public List<List<String>> groupAnagrams(String[] strs) {
@@ -29,7 +28,19 @@ class Solution {
         return ans;
     }
 
-    public String getKey(String s) {
+    private String getKey(String s) {
+        char[] tmp = s.toCharArray();
+        Arrays.sort(tmp);
+        return new String(tmp);
+    }
+}
+
+class Solution2 {
+    public List<List<String>> groupAnagrams(String[] strs) {
+        return new ArrayList<>(Arrays.stream(strs).collect(Collectors.groupingBy(s -> getKey(s), Collectors.toList())).values());
+    }
+
+    private String getKey(String s) {
         char[] tmp = s.toCharArray();
         Arrays.sort(tmp);
         return new String(tmp);

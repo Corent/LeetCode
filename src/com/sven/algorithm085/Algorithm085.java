@@ -12,6 +12,10 @@ import java.util.Stack;
 public class Algorithm085 {
 }
 
+/**
+ * 转换为上一题的问题
+ * heights[i][j]表示前i行，位置j上的最大高度
+ */
 class Solution {
 
     public int maximalRectangle(char[][] matrix) {

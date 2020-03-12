@@ -34,6 +34,7 @@ class Solution {
     }
 
     private void swap(int[] nums, int i, int j) {
+        if (i == j) return;
         int tmp = nums[i];
         nums[i] = nums[j];
         nums[j] = tmp;
@@ -88,7 +89,7 @@ class Solution2 {
 
         for (int i = 0; i < nums.length; i++) {
             if (used[i]) continue;
-            if (i > 0 && !used[i - 1] && nums[i] == nums[i - 1]) continue;
+            if (i > 0 && !used[i - 1] && nums[i] == nums[i - 1]) continue;  // 前一个和当前这个一样，但是前面那个没用过，所以当前这个也该跳过
 
             used[i] = true;
             permute.add(nums[i]);

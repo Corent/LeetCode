@@ -27,7 +27,7 @@ class Solution {
 
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         if (candidates == null || candidates.length == 0) return ans;
-        Arrays.sort(candidates);
+        // Arrays.sort(candidates); // Not necessary
         this.candidates = candidates;
         resolve(0, target);
         return ans;

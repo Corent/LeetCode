@@ -23,56 +23,60 @@ public class Algorithm068 {
  */
 class Solution {
 
+    private int maxWidth;
+
     public List<String> fullJustify(String[] words, int maxWidth) {
         List<String> ans = new ArrayList<>();
         if (words == null || words.length == 0) return ans;
+        this.maxWidth = maxWidth;
+        int sum = 0;
+        List<String> line = new ArrayList<>();
         for (int i = 0; i < words.length; ) {
-            int sum = 0, nextSum = words[i].length();
-            List<String> line = new ArrayList<>();
-            boolean flag = false, addLast = false;
-            while (i < words.length && nextSum <= maxWidth) {
-                sum = nextSum;
-                line.add(words[i]);
-                addLast = true;
-                if (i == words.length - 1) {
-                    flag = false;
-                    break;
-                }
-                nextSum = sum + words[++i].length() + 1;
-                flag = true;
-                addLast = false;
+            if (line.isEmpty()) {
+                sum = words[i].length();
+                line.add(words[i++]);
+                continue;
             }
-            ans.add(handleLine(line, sum, maxWidth, i == words.length - 1 && addLast));
-            if (!flag) i++;
+            if (sum + words[i].length() + 1 <= maxWidth) {
+                sum += words[i].length() + 1;
+                line.add(words[i++]);
+                continue;
+            }
+            ans.add(handleLine(line, sum, i == words.length));
+            sum = 0;
+            line.clear();
+        }
+        if (!line.isEmpty()) {
+            ans.add(handleLine(line, sum, true));
         }
         return ans;
     }
 
-    private String handleLine(List<String> line, int sum, int maxWidth, boolean isLast) {
-        int specnt = maxWidth - sum, wc = line.size();
-        if (wc < 2) {
-            String s = wc == 0? "": line.get(0);
-            for (int i = 0; s.length() < maxWidth; i++) s += ' ';
-            return s;
+    private String handleLine(List<String> line, int sum, boolean isLastLine) {
+        int speCnt = maxWidth - sum, wCnt = line.size();
+        if (wCnt < 2) {
+            StringBuilder builder = new StringBuilder(wCnt == 0? "": line.get(0));
+            for (int i = 0; builder.length() < maxWidth; i++) builder.append(' ');
+            return builder.toString();
         }
-        String last = line.get(wc - 1);
-        line.remove(wc - 1);
-        wc--;
-        int m = isLast? 0: specnt / wc;
-        int n = isLast? 0: specnt - m * wc;
-        String spe = "";
-        for (int i = 0; i < m; i++) spe += " ";
-        for (int i = 0; i < wc; i++) {
+        String last = line.get(wCnt - 1);
+        line.remove(wCnt-- - 1);
+        int m = isLastLine? 0: speCnt / wCnt;
+        int n = isLastLine? 0: speCnt % wCnt;
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < m; i++) builder.append(' ');
+        String spe = builder.toString();
+        builder = new StringBuilder();
+        for (int i = 0; i < wCnt; i++) {
             String s = line.get(i);
-            s = s + (s.length() == 0? "": " ") + spe;
+            builder.append(s).append(s.length() == 0 ? "" : " ").append(spe);
             if (n > 0) {
-                s += " ";
+                builder.append(" ");
                 n--;
             }
-            line.set(i, s);
         }
-        String ans = line.stream().reduce("", (a, b) -> a + b) + last;
-        while (isLast && ans.length() < maxWidth) ans += ' ';
-        return ans;
+        builder.append(last);
+        while (isLastLine && builder.length() < maxWidth) builder.append(' ');
+        return builder.toString();
     }
 }

@@ -27,7 +27,7 @@ class Solution {
             else right = mid - 1;
         }
         if (ans[0] == -1) return ans;
-        left = 0;
+        left = ans[0];
         right = nums.length - 1;
         while (left <= right && nums[left] <= target && nums[right] >= target) {
             int mid = (left + right) / 2;

@@ -114,6 +114,7 @@ class Solution2 {
     }
 
     private void swap(int i, int j) {
+        if (i == j) return;
         int tmp = nums[i];
         nums[i] = nums[j];
         nums[j] = tmp;

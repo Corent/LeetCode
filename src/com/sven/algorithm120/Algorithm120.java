@@ -1,6 +1,6 @@
 package com.sven.algorithm120;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -28,8 +28,6 @@ class Solution {
                 else dp[j] = Math.min(dp[j - 1], dp[j]) + row.get(j);
             }
         }
-        int ans = Integer.MAX_VALUE;
-        for (Integer num: dp) ans = Math.min(ans, num);
-        return ans;
+        return Arrays.stream(dp).min().getAsInt();
     }
 }
