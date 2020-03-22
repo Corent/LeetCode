@@ -14,10 +14,21 @@ import java.util.Set;
 public class Algorithm207 {
 }
 
+/**
+ * 拓扑排序
+ */
 class Solution {
+
+    private int numCourses;
+    private Set<Integer>[] nexts;
+    private Set<Integer>[] prevs;
+
     public boolean canFinish(int numCourses, int[][] prerequisites) {
 
-        Set<Integer>[] nexts = new Set[numCourses], prevs = new Set[numCourses];
+
+        nexts = new Set[numCourses];
+        prevs = new Set[numCourses];
+        this.numCourses = numCourses;
         for (int i = 0; i < numCourses; i++) {
             nexts[i] = new HashSet<>();
             prevs[i] = new HashSet<>();
@@ -29,27 +40,26 @@ class Solution {
             prevs[e].add(s);
         }
 
-        Integer zeroPrev = null, cnt = 0;
+
+        Integer zeroPrev = findNext(), cnt = 0;
+        while (zeroPrev != null) {
+            final int zeroPrevIdx = zeroPrev;
+            nexts[zeroPrev].parallelStream().forEach(idx -> prevs[idx].remove(zeroPrevIdx));
+            prevs[zeroPrev] = null;
+            cnt++;
+            zeroPrev = findNext();
+        }
+        return cnt == numCourses;
+    }
+
+    private Integer findNext() {
+        Integer zeroPrev = null;
         for (int i = 0; i < numCourses; i++) {
             if (prevs[i] != null && prevs[i].size() == 0) {
                 zeroPrev = i;
                 break;
             }
         }
-        while (zeroPrev != null) {
-            final int zeroPrevIdx = zeroPrev;
-            nexts[zeroPrev].parallelStream().forEach(idx -> prevs[idx].remove(zeroPrevIdx));
-            prevs[zeroPrev] = null;
-            cnt++;
-
-            zeroPrev = null;
-            for (int i = 0; i < numCourses; i++) {
-                if (prevs[i] != null && prevs[i].size() == 0) {
-                    zeroPrev = i;
-                    break;
-                }
-            }
-        }
-        return cnt == numCourses;
+        return zeroPrev;
     }
 }

@@ -17,6 +17,12 @@ public class Algorithm166 {
     }
 }
 
+/**
+ * Step 1: 判断0值
+ * Step 2: 判断正负号
+ * Step 3: 判断余数
+ * Step 4: 余数不为0情况下，循环除，保存每一步的结果及其位置，直到找到完整的循环节
+ */
 class Solution {
 
     public String fractionToDecimal(int numerator, int denominator) {

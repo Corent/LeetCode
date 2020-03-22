@@ -11,7 +11,7 @@ public class Algorithm204 {
 }
 
 /**
- * https://blog.csdn.net/lisonglisonglisong/article/details/45309651
+ * 将从1到n的数进行筛选
  */
 class Solution {
     public int countPrimes(int n) {
@@ -32,8 +32,7 @@ class Solution {
              }
         }
 
-        for (Boolean b: del)
-            if (!b) ans++;
+        for (Boolean b: del) if (!b) ans++;
 
         return ans;
     }

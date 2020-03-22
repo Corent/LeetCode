@@ -38,10 +38,8 @@ class Solution {
     private void reverse(int from, int to) {
         while (from < to) {
             char c = chs[from];
-            chs[from] = chs[to];
-            chs[to] = c;
-            from++;
-            to--;
+            chs[from++] = chs[to];
+            chs[to--] = c;
         }
     }
 }

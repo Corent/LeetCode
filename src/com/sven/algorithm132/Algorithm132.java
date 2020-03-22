@@ -15,24 +15,24 @@ class Solution {
         if (s == null || s.length() == 0) return 0;
         int n = s.length();
         int[] dp = new int[n + 1];
+        char[] chs = s.toCharArray();
         boolean[][] isPalin = new boolean[n][n];
-
         for (int i = 0; i < n; i++) {
             isPalin[i][i] = true;
-            if (i + 1 < n) isPalin[i][i + 1] = (s.charAt(i) == s.charAt(i + 1));
+            if (i + 1 < n) isPalin[i][i + 1] = (chs[i] == chs[i + 1]);
         }
         for (int i = n - 1; i >= 0; i--) {
             for (int j = i + 2; j < n; j++) {
-                isPalin[i][j] = isPalin[i + 1][j - 1] && (s.charAt(i) == s.charAt(j));
+                isPalin[i][j] = isPalin[i + 1][j - 1] && (chs[i] == chs[j]);
             }
         }
-
         dp[0] = -1;
         for (int i = 1; i <= n; i++) {
             dp[i] = i - 1;
             for (int j = 0; j < i; j++) {
-                if (isPalin[j][i - 1])
+                if (isPalin[j][i - 1]) {
                     dp[i] = Math.min(dp[i], dp[j] + 1);
+                }
             }
         }
         return dp[n];

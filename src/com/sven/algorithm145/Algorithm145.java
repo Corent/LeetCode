@@ -1,6 +1,7 @@
 package com.sven.algorithm145;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
@@ -43,6 +44,28 @@ class Solution {
             if (node.left != null) {
                 stack.push(node.left);
                 node.left = null;
+            }
+        }
+        return ans;
+    }
+}
+
+/**
+ * https://blog.csdn.net/yinger_0131/article/details/80379418
+ */
+class Solution2 {
+    public List<Integer> postorderTraversal(TreeNode root) {
+        LinkedList<Integer> ans = new LinkedList<>();
+        if (root == null) return ans;
+        Stack<TreeNode> stack = new Stack<TreeNode>() {{ push(root); }};
+        while (!stack.isEmpty()) {
+            TreeNode node = stack.pop();
+            ans.addFirst(node.val);
+            if (node.left != null) {
+                stack.push(node.left);
+            }
+            if (node.right != null) {
+                stack.push(node.right);
             }
         }
         return ans;

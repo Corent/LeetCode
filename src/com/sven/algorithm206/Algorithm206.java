@@ -16,6 +16,9 @@ class ListNode {
     ListNode(int x) { val = x; }
 }
 
+/**
+ * 迭代
+ */
 class Solution {
     public ListNode reverseList(ListNode head) {
         ListNode prev = null;
@@ -26,5 +29,26 @@ class Solution {
             prev = tmp;
         }
         return prev;
+    }
+}
+
+/**
+ * 递归
+ */
+class Solution2 {
+
+    private ListNode root = new ListNode(0);
+
+    public ListNode reverseList(ListNode head) {
+        reverseListCore(head);
+        return root.next;
+    }
+
+    public ListNode reverseListCore(ListNode head) {
+        if (head == null) return root;
+        ListNode prev = reverseListCore(head.next);
+        prev.next = head;
+        head.next = null;
+        return head;
     }
 }

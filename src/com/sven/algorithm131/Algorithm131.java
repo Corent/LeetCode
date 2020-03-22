@@ -10,12 +10,13 @@ class Solution {
 
     private String s;
     private Integer n;
+    private char[] chs;
     private List<String> current = new ArrayList<>();
     private List<List<String>> ans = new ArrayList<>();
 
     private boolean isPalindrome(int from, int to) {
         while (from < to) {
-            if (s.charAt(from) != s.charAt(to)) return false;
+            if (chs[from] != chs[to]) return false;
             from++;
             to--;
         }
@@ -41,6 +42,7 @@ class Solution {
         n = s.length();
         if (n == 0) return ans;
         this.s = s;
+        this.chs = s.toCharArray();
         partitionCore(0);
         return ans;
     }

@@ -37,3 +37,27 @@ class Solution {
         nums.remove(nums.size() - 1);
     }
 }
+
+class Solution2 {
+
+    private int ans = 0;
+    private int num = 0;
+
+    public int sumNumbers(TreeNode root) {
+        if (root == null) return ans;
+        sumNumbersCore(root);
+        return ans;
+    }
+
+    private void sumNumbersCore(TreeNode root) {
+        if (root == null) return;
+        num = num * 10 + root.val;
+        if (root.left == null && root.right == null) {
+            ans += num;
+        } else {
+            sumNumbersCore(root.left);
+            sumNumbersCore(root.right);
+        }
+        num /= 10;
+    }
+}

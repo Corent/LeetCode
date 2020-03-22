@@ -16,9 +16,17 @@ public class Algorithm210 {
 }
 
 class Solution {
+
+    private int numCourses;
+    private Set<Integer>[] nexts;
+    private Set<Integer>[] prevs;
+
     public int[] findOrder(int numCourses, int[][] prerequisites) {
 
-        Set<Integer>[] nexts = new Set[numCourses], prevs = new Set[numCourses];
+
+        nexts = new Set[numCourses];
+        prevs = new Set[numCourses];
+        this.numCourses = numCourses;
         for (int i = 0; i < numCourses; i++) {
             nexts[i] = new HashSet<>();
             prevs[i] = new HashSet<>();
@@ -30,33 +38,32 @@ class Solution {
             prevs[e].add(s);
         }
 
-        List<Integer> ans = new ArrayList<>(numCourses);
-        Integer zeroPrev = null, cnt = 0;
+        List<Integer> courses = new ArrayList<>(numCourses);
+        Integer zeroPrev = findNext(), cnt = 0;
+        while (zeroPrev != null) {
+            courses.add(zeroPrev);
+            final int zeroPrevIdx = zeroPrev;
+            nexts[zeroPrev].parallelStream().forEach(idx -> prevs[idx].remove(zeroPrevIdx));
+            prevs[zeroPrev] = null;
+            cnt++;
+
+            zeroPrev = findNext();
+        }
+        if (cnt != numCourses) courses.clear();
+        int n = courses.size();
+        int[] res = new int[n];
+        for (int i = 0; i < n; i++) res[i] = courses.get(n - 1 - i);
+        return res;
+    }
+
+    private Integer findNext() {
+        Integer zeroPrev = null;
         for (int i = 0; i < numCourses; i++) {
             if (prevs[i] != null && prevs[i].size() == 0) {
                 zeroPrev = i;
                 break;
             }
         }
-        while (zeroPrev != null) {
-            ans.add(zeroPrev);
-            final int zeroPrevIdx = zeroPrev;
-            nexts[zeroPrev].parallelStream().forEach(idx -> prevs[idx].remove(zeroPrevIdx));
-            prevs[zeroPrev] = null;
-            cnt++;
-
-            zeroPrev = null;
-            for (int i = 0; i < numCourses; i++) {
-                if (prevs[i] != null && prevs[i].size() == 0) {
-                    zeroPrev = i;
-                    break;
-                }
-            }
-        }
-        if (cnt != numCourses) ans.clear();
-        int n = ans.size();
-        int[] res = new int[n];
-        for (int i = 0; i < n; i++) res[i] = ans.get(n - 1 - i);
-        return res;
+        return zeroPrev;
     }
 }

@@ -11,6 +11,8 @@ public class Algorithm214 {
 }
 
 /**
+ * 寻找最长回文前缀
+ * KMP
  * https://www.cnblogs.com/grandyang/p/4523624.html
  * https://blog.csdn.net/yujin753/article/details/47047155
  */
@@ -26,5 +28,22 @@ class Solution {
             next[i] = j;
         }
         return r.substring(0, s.length() - next[t.length() - 1]) + s;
+    }
+}
+
+class Solution2 {
+    public String shortestPalindrome(String s) {
+        int i = 0, end = s.length() - 1, j = end;
+        char[] chs = s.toCharArray();
+        while (i < j) {
+            if (chs[i] == chs[j]) {
+                ++i;
+                --j;
+            } else {
+                i = 0;
+                j = --end;
+            }
+        }
+        return new StringBuilder(s.substring(end + 1)).reverse().toString() + s;
     }
 }

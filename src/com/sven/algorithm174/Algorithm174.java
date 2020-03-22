@@ -10,6 +10,9 @@ package com.sven.algorithm174;
 public class Algorithm174 {
 }
 
+/**
+ * dp[i][j]表示到达此位置是至少要有多少血量
+ */
 class Solution {
     public int calculateMinimumHP(int[][] dungeon) {
         int m = dungeon.length, n = dungeon[0].length;

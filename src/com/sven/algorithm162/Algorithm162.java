@@ -17,7 +17,7 @@ class Solution {
             if (l == r) return l;
             int mid = (l + r) / 2;
             if (nums[mid] < nums[mid + 1]) l = mid + 1;
-            else r = mid;
+            else r = mid;   // 题目限定没有nums[mid] == nums[mid + 1]的情况
         }
         return -1;
     }

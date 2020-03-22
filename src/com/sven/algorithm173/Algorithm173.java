@@ -2,6 +2,7 @@ package com.sven.algorithm173;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * Copyright (C) 1998 - 2018 SOHU Inc., All Rights Reserved.
@@ -20,6 +21,9 @@ class TreeNode {
     TreeNode(int x) { val = x; }
 }
 
+/**
+ * No, O(N) memory solution
+ */
 class BSTIterator {
 
     private int idx = -1;
@@ -44,5 +48,41 @@ class BSTIterator {
     /** @return the next smallest number */
     public int next() {
         return nums.get(++idx);
+    }
+}
+
+/**
+ * https://blog.csdn.net/wen1158646729/article/details/47748649
+ */
+
+class BSTIterator2 {
+
+    private Stack<TreeNode> stack = new Stack<>();
+
+    public BSTIterator2(TreeNode root) {
+
+        while(root != null){
+            stack.push(root);
+            root = root.left;
+        }
+    }
+
+    /** @return whether we have a next smallest number */
+    public boolean hasNext() {
+        return !stack.isEmpty();
+    }
+
+    /** @return the next smallest number */
+    public int next() {
+        TreeNode minCurrent = stack.pop();
+        if(minCurrent.right != null){
+            TreeNode rightNode = minCurrent.right;
+            while(rightNode != null){
+                stack.push(rightNode);
+                rightNode = rightNode.left;
+            }
+        }
+
+        return minCurrent.val;
     }
 }

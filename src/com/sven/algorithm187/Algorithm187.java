@@ -31,14 +31,15 @@ class Solution {
         for (int i = 0; i < n; i++) {
             key = ((key << 2) | vals.get(s.charAt(i))) & 0x000fffff;
             if (i < 9) continue;
-            if (!map.containsKey(key)) map.put(key, 1);
-            else {
-                map.put(key, map.get(key) + 1);
-                String str = s.substring(i - 9, i + 1);
-                if (!set.contains(str)) {
-                    ans.add(str);
-                    set.add(str);
-                }
+            if (!map.containsKey(key)) {
+                map.put(key, 1);
+                continue;
+            }
+            map.put(key, map.get(key) + 1);
+            String str = s.substring(i - 9, i + 1);
+            if (!set.contains(str)) {
+                ans.add(str);
+                set.add(str);
             }
         }
         return ans;
