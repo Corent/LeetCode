@@ -8,23 +8,24 @@ import java.util.List;
 public class Algorithm239 {
 }
 
+/**
+ * queue 存储当前窗口内最大致的下标，queue内的单个位置的数可能对应窗口中多个数
+ */
 class Solution {
     public int[] maxSlidingWindow(int[] nums, int k) {
 
         if (nums == null || nums.length < k || k <= 0) return new int[0];
 
-        List<Integer> list = new ArrayList<>(nums.length - k + 1);
-        Deque<Integer> que = new ArrayDeque<>(k);
+        int idx = 0;
+        int[] ans = new int[nums.length - k + 1];
+        Deque<Integer> queue = new ArrayDeque<>(k);
         for (int i = 0, n = nums.length; i < n; i++) {
-            if (!que.isEmpty() && (i - que.peekFirst() == k)) que.pollFirst();
-            while (!que.isEmpty() && nums[i] >= nums[que.peekLast()]) que.pollLast();
-            que.add(i);
-            if (i >= (k - 1)) list.add(nums[que.peekFirst()]);
+            if (!queue.isEmpty() && (i - queue.peekFirst() == k)) queue.pollFirst();
+            while (!queue.isEmpty() && nums[i] >= nums[queue.peekLast()]) queue.pollLast();
+            queue.add(i);
+            if (i >= (k - 1)) ans[idx++] = nums[queue.peekFirst()];
         }
 
-        int m = list.size();
-        int[] ans = new int[m];
-        for (int i = 0; i < m; i++) ans[i] = list.get(i);
         return ans;
     }
 }

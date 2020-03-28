@@ -27,3 +27,25 @@ class Solution {
         return one;
     }
 }
+
+/**
+ * 更通用方法，其他数字均出现了k次
+ */
+class Solution2 {
+
+    public int singleNumber(int[] nums) {
+        return singleNumber(nums, 3);
+    }
+
+    public int singleNumber(int[] nums, int k) {
+        int ans = 0;
+        int[] bits = new int[32];
+        for (int i = 0; i < 32; i++) {
+            for (int n: nums) {
+                bits[i] += (n >> i) & 1;
+            }
+            ans |= (bits[i] % k) << i;
+        }
+        return ans;
+    }
+}

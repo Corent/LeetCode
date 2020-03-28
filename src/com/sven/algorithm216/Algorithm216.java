@@ -34,6 +34,7 @@ class Solution {
             return;
         }
         if (k == 0 || n == 0) return;
+        if ((nums[nums.length - 1] + nums[nums.length - k]) * k / 2 < n) return;
         for (int i = from; i <= nums.length - k; i++) {
             current.add(nums[i]);
             combinationSum3Core(i + 1, k - 1, n - nums[i]);

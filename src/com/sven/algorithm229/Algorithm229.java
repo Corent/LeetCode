@@ -6,6 +6,9 @@ import java.util.List;
 public class Algorithm229 {
 }
 
+/**
+ * https://www.cnblogs.com/grandyang/p/4606822.html
+ */
 class Solution {
     public List<Integer> majorityElement(int[] nums) {
         List<Integer> ans = new ArrayList<>(2);
@@ -21,14 +24,14 @@ class Solution {
             } else if (nCnt == 0) {
                 n = num;
                 nCnt = 1;
-            } else {
+            } else {    //  Attention!!!
                 mCnt--;
                 nCnt--;
             }
         }
 
         mCnt = nCnt = 0;
-        for (int num: nums) {
+        for (int num: nums) {   //  得验证一遍
             if (num == m) mCnt++;
             else if (num == n) nCnt++;
         }

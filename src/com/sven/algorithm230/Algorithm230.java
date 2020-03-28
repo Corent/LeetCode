@@ -15,17 +15,23 @@ class TreeNode {
 
 class Solution {
 
-    private List<Integer> list = new ArrayList<>();
+    private int k;
+    private int ans = 0;
+    private int idx = 0;
 
     private void inOrder(TreeNode root) {
         if (root == null) return;
         if (root.left != null) inOrder(root.left);
-        list.add(root.val);
+        if (++idx == k - 1) {
+            ans = root.val;
+            return;
+        }
         if (root.right != null) inOrder(root.right);
     }
 
     public int kthSmallest(TreeNode root, int k) {
+        this.k = k;
         inOrder(root);
-        return list.get(k - 1);
+        return ans;
     }
 }

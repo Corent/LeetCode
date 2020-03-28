@@ -16,9 +16,10 @@ public class Algorithm218 {
  * https://www.jianshu.com/p/ef44e79462e8
  */
 class Solution {
+
     private class Edge {
-        int height;
         int x;
+        int height;
         boolean isStart;
 
         Edge(int x, int height, boolean isStart) {
@@ -29,10 +30,10 @@ class Solution {
     }
 
 
-    public List<int[]> getSkyline(int[][] buildings) {
-        List<int[]> ret = new ArrayList<int[]>();
+    public List<List<Integer>> getSkyline(int[][] buildings) {
+        List<List<Integer>> ans = new ArrayList<>();
         if (buildings == null || buildings.length == 0 || buildings[0].length == 0) {
-            return ret;
+            return ans;
         }
 
         List<Edge> edges = new ArrayList<Edge>();
@@ -41,47 +42,36 @@ class Solution {
             edges.add(new Edge(buildings[i][1], buildings[i][2], false));
         }
 
-        Collections.sort(edges, new Comparator<Edge>() {
-            public int compare(Edge e1, Edge e2) {
-                if (e1.x != e2.x) {
-                    return e1.x - e2.x;
-                }
-                else if (e1.isStart && e2.isStart) {
-                    return e2.height - e1.height;
-                }
-                else if (!e1.isStart && !e2.isStart) {
-                    return e1.height - e2.height;
-                }
-                else {
-                    return e1.isStart ? -1 : 1;
-                }
+        Collections.sort(edges, (e1, e2) -> {
+            if (e1.x != e2.x) {                     //  X不相等的情况下，小的放前边
+                return e1.x - e2.x;
+            } else if (e1.isStart && e2.isStart) {  //  X相等，同是左边点的情况下，高的放前边
+                return e2.height - e1.height;
+            } else if (!e1.isStart && !e2.isStart) {//  X相等，同是右边点的情况下，低的放前边
+                return e1.height - e2.height;
+            } else {                                //  X相等，一左一右的情况下，左边的放前边
+                return e1.isStart ? -1 : 1;
             }
         });
 
-        PriorityQueue<Integer> pq = new PriorityQueue<Integer>(10, new Comparator<Integer>() {
-            public int compare(Integer e1, Integer e2) {
-                return e2.compareTo(e1);
-            }
-        });
+        PriorityQueue<Integer> queue = new PriorityQueue<>(Comparator.reverseOrder());
 
         for (Edge edge : edges) {
             if (edge.isStart) {
-                if (pq.isEmpty() || edge.height > pq.peek()) {
-                    ret.add(new int[]{edge.x, edge.height});
+                if (queue.isEmpty() || edge.height > queue.peek()) {    //  上升过程中，当前点比此前最高点还高，找到一个key point
+                    ans.add(Arrays.asList(new Integer[]{edge.x, edge.height}));
                 }
-                pq.offer(edge.height);
-            }
-            else {
-                pq.remove(edge.height);
-                if (pq.isEmpty()) {
-                    ret.add(new int[]{edge.x, 0});
-                }
-                else if (edge.height > pq.peek()) {
-                    ret.add(new int[]{edge.x, pq.peek()});
+                queue.offer(edge.height);
+            } else {    //  下降过程
+                queue.remove(edge.height);  //  移除此高度
+                if (queue.isEmpty()) {  //  在地平线处产生key point
+                    ans.add(Arrays.asList(new Integer[]{edge.x, 0}));
+                } else if (edge.height > queue.peek()) {    //  当前是至高点，找到一个key point，不过高度是queue.peek()
+                    ans.add(Arrays.asList(new Integer[]{edge.x, queue.peek()}));
                 }
             }
         }
 
-        return ret;
+        return ans;
     }
 }

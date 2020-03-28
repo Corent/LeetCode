@@ -54,16 +54,19 @@ class Solution2 {
 
     // 在from - to范围内查找排序后位置为idx的元素
     private int findKthLargest(int from, int to) {
-        int i = from, j = to;
-        while (i < j) {
-            while (i < j && nums[j] >= nums[i]) j--;
-            swap(i, j);
-            while (i < j && nums[i] <= nums[j]) i++;
-            swap(i, j);
+        while (from < to) {
+            int i = from, j = to;
+            while (i < j) {
+                while (i < j && nums[j] >= nums[i]) j--;
+                swap(i, j);
+                while (i < j && nums[i] <= nums[j]) i++;
+                swap(i, j);
+            }
+            if (i == idx) return nums[i];
+            if (i < idx) from = i + 1;
+            else to = i - 1;
         }
-        if (i == idx) return nums[i];
-        if (i < idx) return findKthLargest(i + 1, to);
-        return findKthLargest(from, i - 1);
+        return nums[from];
     }
 
     private void swap(int i, int j) {

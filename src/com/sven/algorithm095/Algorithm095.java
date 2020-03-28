@@ -20,6 +20,9 @@ class TreeNode {
     TreeNode(int x) { val = x; }
 }
 
+/**
+ * Similar problem: Algorithm 241 https://leetcode.com/problems/different-ways-to-add-parentheses
+ */
 class Solution {
 
     public List<TreeNode> generateTrees(int n) {
