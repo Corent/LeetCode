@@ -3,6 +3,9 @@ package com.sven.algorithm260;
 public class Algorithm260 {
 }
 
+/**
+ * 剑指Offer 面试题40
+ */
 class Solution {
     public int[] singleNumber(int[] nums) {
         int tmp = 0, num1 = 0, num2 = 0;

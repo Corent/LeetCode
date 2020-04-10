@@ -9,6 +9,9 @@ class ListNode {
     ListNode(int x) { val = x; }
 }
 
+/**
+ * 剑指Offer 面试题13
+ */
 class Solution {
     public void deleteNode(ListNode node) {
         int tmp = node.next.val;

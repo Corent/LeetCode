@@ -13,6 +13,9 @@ import java.util.List;
 public class Algorithm377 {
 }
 
+/**
+ * dp[i]表示和为i的组合的个数
+ */
 class Solution {
 
     public int combinationSum4(int[] nums, int target) {

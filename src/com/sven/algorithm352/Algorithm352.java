@@ -17,89 +17,69 @@ class SummaryRanges {
 
     /** Initialize your data structure here. */
     public SummaryRanges() {
-        lists = new ArrayList<Interval>();
+        lists = new ArrayList<>();
     }
 
     public void addNum(int val) {
         if (lists.size() == 0){
-            Interval p = new Interval(val, val);
-            lists.add(p);
+            lists.add(new Interval(val, val));
             return;
         }
 
         if (lists.size() == 1){
             if (lists.get(0).end < val){
                 Interval p = lists.remove(0);
-                if (p.end == val - 1){
-                    Interval p1 = new Interval(p.start, val);
-                    lists.add(p1);
+                if (p.end == val - 1) {
+                    lists.add(new Interval(p.start, val));
                     return;
                 }
-                Interval p1 = new Interval(val, val);
                 lists.add(p);
-                lists.add(p1);
+                lists.add(new Interval(val, val));
                 return;
             } else if (lists.get(0).start > val){
                 Interval p = lists.remove(0);
                 if (p.start == val + 1){
-                    Interval p1 = new Interval(val, p.start);
-                    lists.add(p1);
+                    lists.add(new Interval(val, p.start));
                     return;
                 }
-                Interval p1 = new Interval(val, val);
-                lists.add(p1);
+                lists.add(new Interval(val, val));
                 lists.add(p);
                 return;
-            } else {
-                return;
-            }
+            } else return;
         }
         int pos = findIndex(val);
-        if (pos == -1){
+        if (pos == -1) {
             if (val == lists.get(0).start - 1){
                 lists.get(0).start = val;
-                return;
             } else {
-                Interval p1 = new Interval(val, val);
-                lists.add(0, p1);
-                return;
+                lists.add(0, new Interval(val, val));
             }
+            return;
         }
         if (pos == lists.size() - 1){
-            if (val <= lists.get(pos).end){
-                return;
-            } else {
+            if (val > lists.get(pos).end) {
                 if (val == lists.get(pos).end + 1){
                     lists.get(pos).end=val;
-                    return;
                 } else {
-                    Interval p1 = new Interval(val, val);
-                    lists.add(p1);
-                    return;
+                    lists.add(new Interval(val, val));
                 }
             }
-        }
-
-        if (val <= lists.get(pos).end){
-            return;
-        } else if (val == lists.get(pos + 1).start - 1 && val == lists.get(pos).end + 1){
-            Interval p1 = lists.remove(pos);
-            Interval p2 = lists.remove(pos);
-            Interval p = new Interval(p1.start, p2.end);
-            lists.add(pos, p);
-            return;
-        } else if (val == lists.get(pos + 1).start - 1){
-            lists.get(pos + 1).start = val;
-            return;
-        } else if (val == lists.get(pos).end + 1){
-            lists.get(pos).end = val;
-            return;
-        } else{
-            Interval p = new Interval(val, val);
-            lists.add(pos+1, p);
             return;
         }
 
+        if (val > lists.get(pos).end) {
+            if (val == lists.get(pos + 1).start - 1 && val == lists.get(pos).end + 1){
+                Interval p1 = lists.remove(pos);
+                Interval p2 = lists.remove(pos);
+                lists.add(pos, new Interval(p1.start, p2.end));
+            } else if (val == lists.get(pos + 1).start - 1){
+                lists.get(pos + 1).start = val;
+            } else if (val == lists.get(pos).end + 1){
+                lists.get(pos).end = val;
+            } else{
+                lists.add(pos + 1, new Interval(val, val));
+            }
+        }
     }
 
     public int[][] getIntervals() {

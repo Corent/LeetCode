@@ -10,6 +10,9 @@ package com.sven.algorithm154;
 public class Algorithm154 {
 }
 
+/**
+ * 剑指Offer 面试题8
+ */
 class Solution {
     public int findMin(int[] nums) {
         if (nums == null || nums.length == 0) return -1;

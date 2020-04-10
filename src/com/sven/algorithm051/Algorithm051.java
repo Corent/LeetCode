@@ -60,7 +60,7 @@ class Solution {
 }
 
 /**
- * 《剑指offer》P158
+ * 剑指Offer P158
  */
 class Solution2 {
 

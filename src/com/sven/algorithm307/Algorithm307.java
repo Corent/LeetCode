@@ -97,3 +97,70 @@ class NumArray2 {
         }
     }
 }
+
+/**
+ * 线段树
+ * https://www.bilibili.com/video/BV1j4411R7BE
+ */
+class NumArray3 {
+
+    class SegmentTreeNode {
+        int val;
+        int start;
+        int end;
+        SegmentTreeNode left;
+        SegmentTreeNode right;
+
+        public SegmentTreeNode(int start, int end) {
+            this.start = start;
+            this.end = end;
+            this.val = 0;
+        }
+    }
+
+    private SegmentTreeNode root;
+
+    public NumArray3(int[] nums) {
+        root = buildSegmentTree(nums, 0, nums.length - 1);
+    }
+
+    private SegmentTreeNode buildSegmentTree(int[] nums, int start, int end) {
+        if (start > end) return null;
+        SegmentTreeNode root = new SegmentTreeNode(start, end);
+        if (start == end) root.val = nums[start];
+        else {
+            int mid = start + (end - start) / 2;
+            root.left = buildSegmentTree(nums, start, mid);
+            root.right = buildSegmentTree(nums, mid + 1, end);
+            root.val = root.left.val + root.right.val;
+        }
+        return root;
+    }
+
+    public void update(int i, int val) {
+        update(root, i, val);
+    }
+
+    public void update(SegmentTreeNode root, int i, int val) {
+        if (root.start == root.end && root.start == i) {
+            root.val = val;
+            return;
+        }
+        int mid = root.start + (root.end - root.start) / 2;
+        if (i <= mid) update(root.left, i, val);
+        else update(root.right, i, val);
+        root.val = root.left.val + root.right.val;
+    }
+
+    public int sumRange(int i, int j) {
+        return sumRange(root, i, j);
+    }
+
+    public int sumRange(SegmentTreeNode root, int start, int end) {
+        if (root.start == start && root.end == end) return root.val;
+        int mid = root.start + (root.end - root.start) / 2;
+        if (end <= mid) return sumRange(root.left, start, end);
+        else if (start > mid) return sumRange(root.right, start, end);
+        else return sumRange(root.left, start, mid) + sumRange(root.right, mid + 1, end);
+    }
+}

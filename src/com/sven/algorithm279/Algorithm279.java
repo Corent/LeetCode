@@ -43,9 +43,25 @@ class Solution {
 /**
  * https://blog.csdn.net/qq_17550379/article/details/80875782
  * Lagrange 四平方定理： 任何一个正整数都可以表示成不超过四个整数的平方之和
+ * 满足四数平方和定理的数n（这里要满足由四个数构成，小于四个不行），必定满足 n = 4^a(8b + 7)
  */
 class Solution2 {
 
+    public int numSquares(int n) {
+
+        while (n % 4 == 0) n /= 4;
+        if (n % 8 == 7) return 4;
+
+        int a = 0;
+        while (a * a <= n) {
+            int b = Double.valueOf(Math.sqrt(n - a * a)).intValue();
+            if (a * a + b * b == n)
+                return (a == 0 ? 0 : 1) + (b == 0 ? 0 : 1);
+            a++;
+        }
+
+        return 3;
+    }
 }
 
 /**

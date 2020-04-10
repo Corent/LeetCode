@@ -26,7 +26,7 @@ class Solution {
 }
 
 /**
- * 剑指offer面试题8 or LeetCode 153
+ * 剑指Offer面试题8 or LeetCode 153
  * 先找出旋转数组中的最小值，判断target在哪个有序段内，再在有序段内二分查找
  */
 class Solution2 {

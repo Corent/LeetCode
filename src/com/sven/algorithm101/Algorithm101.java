@@ -17,6 +17,9 @@ class TreeNode {
     TreeNode(int x) { val = x; }
 }
 
+/**
+ * 剑指Offer 面试题59
+ */
 class Solution {
 
     public boolean isSymmetric(TreeNode root) {

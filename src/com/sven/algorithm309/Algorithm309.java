@@ -4,6 +4,9 @@ public class Algorithm309 {
 }
 
 /**
+ * s0 —— sell后rest或者rest后rest
+ * s1 —— rest后的buy或者buy后的rest
+ * s2 —— rest后的sell
  * https://blog.csdn.net/zjuPeco/article/details/76468185
  */
 class Solution {

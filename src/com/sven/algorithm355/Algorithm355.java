@@ -11,6 +11,10 @@ import java.util.stream.Collectors;
 public class Algorithm355 {
 }
 
+/**
+ * 合并 K 个有序链表的算法
+ * https://blog.csdn.net/haut_ykc/article/details/102687729
+ */
 class Twitter {
 
     private Map<Integer, Set<Integer>> fans;

@@ -19,13 +19,16 @@ class TreeNode {
     TreeNode(int x) { val = x; }
 }
 
+/**
+ * 剑指Offer 面试题61
+ */
 class Solution {
 
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
         List<List<Integer>> ans = new ArrayList<>();
         if (root == null) return ans;
         List<Integer> level = new ArrayList<>();
-        Stack<TreeNode>[] stacks = new Stack[2];
+        Stack<TreeNode>[] stacks = new Stack[] { new Stack<>(), new Stack<>() };
         stacks[0] = new Stack<>();
         stacks[1] = new Stack<>();
         int idx = 0, levelIdx = 0;

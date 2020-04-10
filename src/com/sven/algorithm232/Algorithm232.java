@@ -50,6 +50,9 @@ class MyQueue {
     }
 }
 
+/**
+ * 剑指Offer 面试题7
+ */
 class MyQueue2 {
 
     private Stack<Integer> stack1;

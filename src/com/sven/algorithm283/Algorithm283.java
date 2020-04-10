@@ -27,6 +27,7 @@ class Solution {
     }
 
     private void swap(int[] nums, int idx1, int idx2) {
+        if (idx1 == idx2) return;
         int tmp = nums[idx1];
         nums[idx1] = nums[idx2];
         nums[idx2] =- tmp;

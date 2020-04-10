@@ -16,14 +16,17 @@ public class Algorithm282 {
  */
 class Solution {
 
+    private int target;
+    private List<String> ans = new LinkedList<>();
+
     public List<String> addOperators(String num, int target) {
-        List<String> ans = new LinkedList<>();
         if (num == null || num.length() == 0) return ans;
-        addOperators(ans, num, target, "", 0, 0);
+        this.target = target;
+        addOperators(num, "", 0, 0);
         return ans;
     }
 
-    public void addOperators(List<String> ans, String num, int target, String tmp, long curRes, long prevNum) {
+    public void addOperators(String num, String tmp, long curRes, long prevNum) {
         if (curRes == target && num.length() == 0) {
             ans.add(new String(tmp));
             return;
@@ -36,12 +39,12 @@ class Solution {
             }
             long curNum = Long.valueOf(curStr);
             String next = num.substring(i);
-            if (tmp.length() != 0) {
-                addOperators(ans, next, target, tmp + "*" + curNum, (curRes - prevNum) + prevNum * curNum, prevNum * curNum);
-                addOperators(ans, next, target, tmp + "+" + curNum, curRes + curNum, curNum);
-                addOperators(ans, next, target, tmp + "-" + curNum, curRes - curNum, -curNum);
+            if (tmp.length() != 0) {    //  不是第一个数的话
+                addOperators(next, tmp + "*" + curNum, (curRes - prevNum) + prevNum * curNum, prevNum * curNum);
+                addOperators(next, tmp + "+" + curNum, curRes + curNum, curNum);
+                addOperators(next, tmp + "-" + curNum, curRes - curNum, -curNum);
             } else {
-                addOperators(ans, next, target, curStr, curNum, curNum);
+                addOperators(next, curStr, curNum, curNum);
             }
         }
     }

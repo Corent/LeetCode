@@ -10,6 +10,8 @@ public class Algorithm239 {
 
 /**
  * queue 存储当前窗口内最大致的下标，queue内的单个位置的数可能对应窗口中多个数
+ *
+ * 剑指Offer 面试题65
  */
 class Solution {
     public int[] maxSlidingWindow(int[] nums, int k) {

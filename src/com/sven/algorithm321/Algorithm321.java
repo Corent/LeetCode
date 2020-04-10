@@ -20,7 +20,7 @@ class Solution {
     public int[] maxNumber(int[] nums1, int[] nums2, int k) {
         int m = nums1.length, n = nums2.length;
         int[] ans = new int[k];
-        for (int i = Math.max(0, k - n); i<= Math.min(k, m); i++) {
+        for (int i = Math.max(0, k - n); i<= Math.min(k, m); i++) { //  两个数组分别取出 i 和 k - i 个数进行合并
             int[] next = merge(max(nums1, i), max(nums2, k - i));
             ans = compare(ans, 0, next, 0)? ans: next;
         }
@@ -45,6 +45,9 @@ class Solution {
         return ans;
     }
 
+    /**
+     * 丢弃前面 nums.length - k 个最小的数
+     */
     private int[] max(int[] nums, int k) {
         int drop = nums.length - k;
         LinkedList<Integer> list = new LinkedList<>();

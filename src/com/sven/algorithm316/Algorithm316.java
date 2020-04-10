@@ -18,20 +18,20 @@ public class Algorithm316 {
     public String removeDuplicateLetters(String s) {
         int[] chCnt = new int[26];
         char[] chs = s.toCharArray();
-        boolean[] visited = new boolean[26];
+        boolean[] visited = new boolean[26];    //  visited[ch - 'a'] 表示该字符是否在栈中
         for (char ch: chs) chCnt[ch - 'a']++;
-        LinkedList<Character> list = new LinkedList<>();
+        LinkedList<Character> queue = new LinkedList<>();
         for (char ch: chs) {
             int idx = ch - 'a';
             chCnt[idx]--;
             if (visited[idx]) continue;
-            while (!list.isEmpty() && chCnt[list.getLast() - 'a'] > 0 && ch < list.getLast()) {
-                visited[list.pollLast() - 'a'] = false;
+            while (!queue.isEmpty() && chCnt[queue.getLast() - 'a'] > 0 && ch < queue.getLast()) {
+                visited[queue.pollLast() - 'a'] = false;    //  出栈，并且标记未在栈中
             }
-            list.addLast(ch);
+            queue.addLast(ch);
             visited[idx] = true;
         }
-        return list.stream().map(String::valueOf)
+        return queue.stream().map(String::valueOf)
                 .reduce("", (s1, s2) -> s1 + s2);
     }
 }

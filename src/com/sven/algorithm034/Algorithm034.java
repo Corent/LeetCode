@@ -12,6 +12,8 @@ public class Algorithm034 {
  * 方法一：折半查找，找到后从左右两边查找
  * 方法二：第一次折半查找某个相等元素的位置，第二次折半查找左边界，第三次折半查找右边界
  * 方法三：方法二的优化，只用两次折半，第一次折半查找左边界，第二次折半查找右边界
+ *
+ * 剑指Offer 面试题38
  */
 class Solution {
     public int[] searchRange(int[] nums, int target) {

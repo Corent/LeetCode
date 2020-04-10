@@ -66,7 +66,7 @@ class Solution {
 }
 
 /**
- * 优先级队列
+ * 优先级队列，DFS找到第一个
  * https://blog.csdn.net/qq_38595487/article/details/84479913
  */
 class Solution2 {
@@ -105,6 +105,6 @@ class Solution2 {
         }
 
         while (pq.size() != 0) dfs(pq.poll());
-        list.add(s);
+        list.add(s);    //  逆序
     }
 }

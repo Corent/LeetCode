@@ -10,6 +10,9 @@ package com.sven.algorithm189;
 public class Algorithm189 {
 }
 
+/**
+ * 剑指Offer 面试题42
+ */
 class Solution {
 
     public void rotate(int[] nums, int k) {

@@ -19,9 +19,9 @@ class Solution {
         Arrays.sort(citations);
         int hIndex = 0;
         for (int i = citations.length - 1; i >= 0; i--) {
-            if(citations[i] <= hIndex) return hIndex;
+            if (citations[i] <= hIndex) return hIndex;
             hIndex++;
         }
-        return hIndex;
+        return citations.length;    //  如果所有的序号都不大于被引次数，则论文数就是H指数，如[11,15]结果为2
     }
 }

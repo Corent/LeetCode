@@ -11,7 +11,7 @@ public class Algorithm313 {
 }
 
 /**
- * 剑指offer 第34题
+ * 剑指Offer 面试题34
  */
 class Solution {
     public int nthSuperUglyNumber(int n, int[] primes) {

@@ -5,6 +5,8 @@ public class Algorithm010 {
 
 /**
  * http://blog.csdn.net/linhuanmars/article/details/21145563
+ *
+ * 剑指Offer 面试题53
  */
 class Solution {
     public boolean isMatch(String s, String p) {

@@ -7,6 +7,9 @@ public class Algorithm264 {
     }
 }
 
+/**
+ * 剑指Offer 面试题34
+ */
 class Solution {
     public int nthUglyNumber(int n) {
         if (n <= 0) return 0;

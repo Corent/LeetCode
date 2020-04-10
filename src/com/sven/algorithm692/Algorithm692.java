@@ -34,12 +34,9 @@ class Solution {
             map.put(w, cnt + 1);
         }
 
-        PriorityQueue<WordCnt> que = new PriorityQueue<WordCnt>(new Comparator<WordCnt>() {
-            @Override
-            public int compare(WordCnt o1, WordCnt o2) {
-                int ans = o1.cnt - o2.cnt;
-                return ans == 0? o2.word.compareTo(o1.word): ans;
-            }
+        PriorityQueue<WordCnt> que = new PriorityQueue<WordCnt>((o1, o2) -> {
+            int ans = o1.cnt - o2.cnt;
+            return ans == 0? o2.word.compareTo(o1.word): ans;
         });
         for (Map.Entry<String, Integer> e: map.entrySet()) {
             WordCnt wordCnt = new WordCnt(e.getKey(), e.getValue());

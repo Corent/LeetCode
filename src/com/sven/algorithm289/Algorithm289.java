@@ -17,9 +17,9 @@ class Solution {
             for (int j = 0; j < n; j++) {
                 int liveCnt = liveNeighborCnt(board, i, j);
                 if (board[i][j] == 1 && liveCnt >= 2 && liveCnt <= 3)
-                    board[i][j] = 3;
+                    board[i][j] = 3;    //  必须是3，因为最低位的1还是会在 liveNeighborCnt() 方法中被用到
                 if (board[i][j] == 0 && liveCnt == 3)
-                    board[i][j] = 2;
+                    board[i][j] = 2;    //  同理，必须是2
             }
         }
 

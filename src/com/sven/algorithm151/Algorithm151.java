@@ -9,6 +9,10 @@ package com.sven.algorithm151;
  */
 public class Algorithm151 {
 }
+
+/**
+ * 剑指Offer 面试题42
+ */
 class Solution {
 
     private char[] chs;

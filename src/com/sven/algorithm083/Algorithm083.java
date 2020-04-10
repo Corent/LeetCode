@@ -35,6 +35,9 @@ class Solution {
     }
 }
 
+/**
+ * 剑指Offer 面试题57
+ */
 class Solution2 {
     public ListNode deleteDuplicates(ListNode head) {
         ListNode node = head, root = new ListNode(0);

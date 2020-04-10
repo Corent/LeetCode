@@ -3,6 +3,9 @@ package com.sven.algorithm238;
 public class Algorithm238 {
 }
 
+/**
+ * 剑指Offer 面试题52
+ */
 class Solution {
     public int[] productExceptSelf(int[] nums) {
         int n = nums.length;

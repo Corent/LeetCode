@@ -1,5 +1,8 @@
 package com.sven.algorithm273;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Algorithm273 {
 }
 
@@ -9,6 +12,41 @@ public class Algorithm273 {
 class Solution {
 
     private String[] units = { "", "Thousand", "Million", "Billion" };
+
+    private Map<Integer, String> words = new HashMap<Integer, String>() {{
+        put(0, " ");
+        put(1, "One");
+        put(2, "Two");
+        put(3, "Three");
+        put(4, "Four");
+        put(5, "Five");
+        put(6, "Six");
+        put(7, "Seven");
+        put(8, "Eight");
+        put(9, "Nine");
+        put(10, "Ten");
+        put(11, "Eleven");
+        put(12, "Twelve");
+        put(13, "Thirteen");
+        put(14, "Fourteen");
+        put(15, "Fifteen");
+        put(16, "Sixteen");
+        put(17, "Seventeen");
+        put(18, "Eighteen");
+        put(19, "Nineteen");
+        put(20, "Twenty");
+        put(30, "Thirty");
+        put(40, "Forty");
+        put(50, "Fifty");
+        put(60, "Sixty");
+        put(70, "Seventy");
+        put(80, "Eighty");
+        put(90, "Ninety");
+        put(100, "Hundred");
+        put(1000, "Thousand");
+        put(1000000, "Million");
+        put(1000000000, "Billion");
+    }};
 
     public String numberToWords(int num) {
         if (num == 0) {
@@ -40,7 +78,9 @@ class Solution {
     }
 
     public String getWord(int num) {
-        switch (num) {
+        String word = words.get(num);
+        return word != null ? word: " ";
+        /*switch (num) {
             case 0:
                 return " ";
             case 1:
@@ -107,6 +147,6 @@ class Solution {
                 return "Billion";
             default:
                 return " ";
-        }
+        }*/
     }
 }

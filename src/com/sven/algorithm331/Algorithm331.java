@@ -6,7 +6,7 @@ public class Algorithm331 {
 }
 
 /**
- * 方法一：栈
+ * 方法一：栈，数字 + # + # -> #，即消除一个叶节点
  * https://www.jianshu.com/p/1e1985b9c318
  */
 class Solution {
@@ -22,7 +22,7 @@ class Solution {
                 if (stack.isEmpty()) return false;
                 stack.pollLast();
             }
-            // 多位数
+            // 多位数，没必要记录完整的数，只需要知道是个数字就行了
             while (preorder.charAt(i) >= '0' && preorder.charAt(i) <= '9' && i + 1 < n
                     && preorder.charAt(i + 1) >= '0' && preorder.charAt(i + 1) <= '9') i++;
             stack.addLast(preorder.charAt(i));
@@ -40,12 +40,12 @@ class Solution2 {
     public boolean isValidSerialization(String preorder) {
         if (preorder == null || preorder.isEmpty()) return false;
         int n = preorder.length();
-        int diff = 1;
+        int diff = 1;   //  根节点出度为1
         for (int i = 0; i < n; i++) {
             if (preorder.charAt(i) == ',') continue;
-            if (--diff < 0) return false;
+            if (--diff < 0) return false;   //  不是根节点，首先得有一个入度
             if (preorder.charAt(i) != '#') {
-                diff += 2;
+                diff += 2;  //  不是空节点，一定有两个出度
                 while (i < n && preorder.charAt(i) >= '0' && preorder.charAt(i) <= '9') i++;
                 i--;
             }
