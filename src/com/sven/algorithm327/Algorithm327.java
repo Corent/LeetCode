@@ -47,6 +47,9 @@ class Solution {
     }
 }
 
+/**
+ * https://blog.csdn.net/jmspan/article/details/51266931
+ */
 class Solution2 {
 
     public int countRangeSum(int[] nums, int lower, int upper) {

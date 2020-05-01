@@ -23,8 +23,9 @@ class Solution {
 
         int ans = 1;
         int[] dp = new int[envelopes.length];
-        Arrays.fill(dp, 1);
+        dp[0] = 1;
         for (int idx = 1; idx < dp.length; idx++) {
+            dp[idx] = 1;
             int[] m = envelopeList.get(idx);
             for (int k = idx - 1; k >= 0; k--) {
                 int[] n = envelopeList.get(k);

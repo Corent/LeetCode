@@ -93,7 +93,7 @@ class Solution2 {
 
     private void dfs(String s) {
 
-        if (!map.containsKey(s)){
+        if (!map.containsKey(s)) {
             list.add(s);
             return;
         }

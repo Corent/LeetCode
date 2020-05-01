@@ -3,6 +3,7 @@ package com.sven.algorithm341;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Stack;
 
 public class Algorithm341 {
 }
@@ -52,3 +53,35 @@ class NestedIterator implements Iterator<Integer> {
  * NestedIterator i = new NestedIterator(nestedList);
  * while (i.hasNext()) v[f()] = i.next();
  */
+
+/**
+ * https://blog.csdn.net/sheldonwong/article/details/78919279
+ */
+class NestedIterator2 implements Iterator<Integer> {
+
+    private Stack<NestedInteger> stack = new Stack();
+
+    public NestedIterator2(List<NestedInteger> nestedList) {
+        for(int i = nestedList.size()-1;i>=0;i--){
+            stack.push(nestedList.get(i));
+        }
+    }
+
+    @Override
+    public Integer next() {
+        return stack.pop().getInteger();
+    }
+
+    @Override
+    public boolean hasNext() {
+        while (!stack.isEmpty()) {
+            NestedInteger ni = stack.peek();
+            if (ni.isInteger()) return true;
+            stack.pop();
+            for(int i = ni.getList().size()-1;i>=0;i--){
+                stack.push(ni.getList().get(i));
+            }
+        }
+        return false;
+    }
+}

@@ -24,7 +24,7 @@ class Solution {
         int i = from, j = m + 1, k = 0, jump = 0;
         while (i <= m || j <= to) {
             if (i > m) {    // 前半段数组已经遍历结束
-                jump ++;
+                jump++;
                 merged[k++] = pos[j++];
             } else if (j > to) {    // 后半段数组已遍历结束
                 smaller[pos[i]] += jump;
