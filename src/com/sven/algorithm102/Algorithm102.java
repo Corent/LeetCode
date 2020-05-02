@@ -31,9 +31,7 @@ class Solution {
         List<List<Integer>> ans = new ArrayList<>();
         if (root == null) return ans;
         List<Integer> level = new ArrayList<>();
-        Queue<TreeNode>[] queues = new LinkedList[2];
-        queues[0] = new LinkedList<>();
-        queues[1] = new LinkedList<>();
+        Queue<TreeNode>[] queues = new LinkedList[] { new LinkedList<>(), new LinkedList<>() };
         int idx = 0;
         queues[idx].add(root);
         while (!queues[idx].isEmpty()) {
