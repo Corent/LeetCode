@@ -19,3 +19,19 @@ class Solution {
         return ans;
     }
 }
+
+/**
+ * dp
+ * https://blog.csdn.net/camellhf/article/details/52824234
+ */
+class Solution2 {
+    public int numberOfArithmeticSlices(int[] A) {
+        int count = 0, addend = 0;
+        for (int i = 2; i < A.length; i++)
+            if (A[i - 1] - A[i] == A[i - 2] - A[i - 1])
+                count += ++addend;
+            else
+                addend = 0;
+        return count;
+    }
+};
