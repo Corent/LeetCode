@@ -49,8 +49,7 @@ class Solution2 {
         int ans = 0;
         for (int i = 0; i < C.length; i++) {
             for (int j = 0; j < D.length; j++) {
-                int sum = C[i] + D[j];
-                ans += map.getOrDefault(-sum, 0);
+                ans += map.getOrDefault(-C[i] - D[j], 0);
             }
         }
         return ans;
