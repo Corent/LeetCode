@@ -21,6 +21,14 @@ class Solution {
         return helper(nums, sums, 0, sum / 4);
     }
 
+    /**
+     *
+     * @param nums
+     * @param sums      sums[i]表示第i边的和
+     * @param pos       第几根火柴
+     * @param target
+     * @return
+     */
     private boolean helper(int[] nums, int[] sums, int pos, int target) {
         if (pos >= nums.length) {
             return sums[0] == target && sums[1] == target && sums[2] == target && sums[3] == target;

@@ -22,7 +22,7 @@ class Solution {
 
             for (int i = m; i >= count0; i--) {
                 for (int j = n; j >= count1; j--) {
-                    dp[i][j] = Math.max(dp[i][j], dp[i - count0][j - count1] + 1);
+                    dp[i][j] = Math.max(dp[i][j], dp[i - count0][j - count1] + 1);  // 如果拿count0 和 count1去组成当前字符串时的情况
                 }
             }
         }

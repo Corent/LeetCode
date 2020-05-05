@@ -51,11 +51,10 @@ class Solution2 {
         Arrays.sort(s);
 
         for (int i = 0,j = 0; i < g.length && j < s.length; ) {
-            if (g[i] <= s[j]) {
+            if (g[i] <= s[j++]) {
                 count++;
                 i++;
-                j++;
-            } else j++;
+            }
         }
 
         return count;

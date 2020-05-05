@@ -28,7 +28,7 @@ class Solution {
                 int diff = Long.valueOf(diffLong).intValue();
                 int count = maps[j].getOrDefault(diff, 0);
                 ans += count;   // 只要有diff存在，之前至少有两个点，再加上A[i]就变成三个，满足条件
-
+                //  获取maps[j]的值后，再计算maps[i]的值，更新为 原本的值 + 连上j新增的值 + 1
                 int original = maps[i].getOrDefault(diff, 0);
                 maps[i].put(diff, original + count + 1);
             }

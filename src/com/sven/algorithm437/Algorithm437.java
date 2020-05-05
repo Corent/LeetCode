@@ -74,9 +74,7 @@ class Solution {
 
     private void pathSumCore(TreeNode root, int sum) {
         if (root == null) return;
-        if (root.val == sum) {
-            ans++;
-        }
+        if (root.val == sum) ans++;
 
         if (root.left != null) {
             pathSumCore(root.left, sum - root.val);
