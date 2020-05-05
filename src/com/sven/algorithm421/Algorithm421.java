@@ -9,9 +9,9 @@ public class Algorithm421 {
  * https://kingsfish.github.io/2017/12/15/Leetcode-421-Maximum-XOR-of-Two-Numbers-in-an-Array/
  */
 class Solution {
+
     public int findMaximumXOR(int[] nums) {
-        int max = 0;
-        int mask = 0;
+        int max = 0, mask = 0;
         for (int i = 31; i >= 0; i--) {
             mask = mask | (1 << i);     // 为获取前n位的临时变量
             HashSet<Integer> set = new HashSet<>();
