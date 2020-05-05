@@ -21,7 +21,7 @@ class Solution {
             }
             if (left.size() + right.size() == k) {
                 int start = i - k + 1;
-                    ans[start] = (k & 1) != 0 ? left.peek() : 0.5 * ((double) left.peek() + (double) right.peek());
+                ans[start] = (k & 1) != 0 ? left.peek() : 0.5 * ((double) left.peek() + (double) right.peek());
                 if (!left.remove(nums[start])) {
                     right.remove(nums[start]);
                 }
