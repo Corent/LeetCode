@@ -16,20 +16,20 @@ class Solution {
 
     public double[] calcEquation(List<List<String>> equations, double[] values, List<List<String>> queries) {
         map = new double[26][26];
-        Map<String, Integer> hashMap = new HashMap<>();
+        Map<String, Integer> hashMap = new HashMap<>(); //  用于保存字符和index的映射
         int count = 0;
         for (int i = 0; i < equations.size(); i++) {
+            Integer indexA, indexB;
             if (!hashMap.containsKey(equations.get(i).get(0))) {
-                hashMap.put(equations.get(i).get(0), count++);
-            }
-            if (!hashMap.containsKey(equations.get(i).get(1))) {
-                hashMap.put(equations.get(i).get(1), count++);
-            }
-        }
+                indexA = count++;
+                hashMap.put(equations.get(i).get(0), indexA);
+            } else indexA = hashMap.get(equations.get(i).get(0));
 
-        for (int i = 0; i < equations.size(); i++) {
-            int indexA = hashMap.get(equations.get(i).get(0));
-            int indexB = hashMap.get(equations.get(i).get(1));
+            if (!hashMap.containsKey(equations.get(i).get(1))) {
+                indexB = count++;
+                hashMap.put(equations.get(i).get(1), indexB);
+            } else indexB = hashMap.get(equations.get(i).get(1));
+
             map[indexA][indexB] = values[i];
             map[indexB][indexA] = 1 / values[i];
             map[indexA][indexA] = 1;

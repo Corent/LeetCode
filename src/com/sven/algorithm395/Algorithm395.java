@@ -10,13 +10,12 @@ class Solution {
     public int longestSubstring(String s, int k) {
         int res = 0, len = s.length();
         char[] ch = s.toCharArray();
-        for (int unique = 0; unique < 26; unique++) {
+        for (int unique = 0; unique < 26; unique++) {   //  不同的字符个数最多有26
             int a = 0; //当前窗口有多少个不同的字母
-            int b = 0; //当前窗口有多少字母的次数是 <= k 的
+            int b = 0; //当前窗口有多少字母的次数是 >= k 的
             int[] cnt = new int[26];
 
-            int left = 0;
-            for (int right = 0; right < len; right++) {
+            for (int left = 0, right = 0; right < len; right++) {
                 int letter = ch[right] - 'a';
                 if (cnt[letter] == 0) a++; //新的字母
                 if (++cnt[letter] == k) b++;
@@ -30,6 +29,7 @@ class Solution {
                         if (a == unique) break;
                     }
                 }
+                //  当前窗口每个字符都出现次数都 >= k
                 if (a == unique && b == unique) res = Math.max(res, right - left + 1);
             }
         }
@@ -55,7 +55,7 @@ class Solution2 {
     public int count(int left, int right) {
         if (right - left + 1 < k) return 0;
         int[] cnt = new int[26];
-        for (int i = left; i <= right; i++) {
+        for (int i = left; i <= right; i++) {   //  先统计该区间内所有字符的出现次数
             ++cnt[s.charAt(i) - 'a'];
         }
         // 去除左右两边不满足条件的字符
