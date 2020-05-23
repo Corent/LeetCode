@@ -3,10 +3,11 @@ package com.sven.algorithm334;
 public class Algorithm334 {
 
     public static void main(String[] args) {
-        System.out.println(new Solution().increasingTriplet(new int[] {2, 5, 3, 4, 5}));
+        System.out.println(new Solution().increasingTriplet(new int[] {3, 5 ,2, 6}));
     }
 }
 
+// 3 5 2 6
 class Solution {
     public boolean increasingTriplet(int[] nums) {
         if (nums == null || nums.length < 3) return false;

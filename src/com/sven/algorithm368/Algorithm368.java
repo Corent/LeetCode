@@ -14,6 +14,7 @@ public class Algorithm368 {
     }
 }
 
+//  最长递增子序列变种
 class Solution {
 
     public List<Integer> largestDivisibleSubset(int[] nums) {

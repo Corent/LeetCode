@@ -8,6 +8,8 @@ public class Algorithm372 {
  * ab mod c = ((a mod c) * (b mod c)) mod c
  * https://blog.csdn.net/beyond702/article/details/53222077
  * https://blog.csdn.net/qq508618087/article/details/51860222
+ *
+ * a ^ (b[0] * 10^(n - 1) + b[1] * 10^(n - 2) + ... + b[n - 2] * 10^1 + b[n - 1] * 10^0) = a ^ ∑ b[n - i] * 10^(i - 1)
  */
 class Solution {
 

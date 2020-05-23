@@ -37,7 +37,7 @@ class Solution2 {
                     case 1:
                         return 2 * 2 * Double.valueOf(Math.pow(3, (n - 4) / 3)).intValue();
                     default:
-                        return 2 * Double.valueOf(Math.pow(3, n/3)).intValue();
+                        return 2 * Double.valueOf(Math.pow(3, n / 3)).intValue();
                 }
         }
     }

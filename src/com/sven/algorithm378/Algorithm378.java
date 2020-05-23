@@ -39,7 +39,7 @@ class Solution2 {
         for (int i = 0; i < n; i++){
             int L = 0, R = n - 1, ans = 0;
             while (L <= R) {
-                int mid = L + (R - L) / 2;
+                int mid = L + ((R - L) >> 1);
                 if (matrix[i][mid] < g) { //若某一行值小于g，则应该是最后一个元素的下标 + 1
                     ans = mid + 1;
                     L = mid + 1;

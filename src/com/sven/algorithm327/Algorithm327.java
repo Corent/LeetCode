@@ -58,11 +58,13 @@ class Solution2 {
         sums[0] = nums[0];
         for (int i = 1; i < nums.length; i++) sums[i] = sums[i - 1] + nums[i];
         int total = 0;
-        TreeMap<Long, Integer> treemap = new TreeMap<>();
+        TreeMap<Long, Integer> treemap = new TreeMap<>();   //  前缀和相同的可能有多个
         for (int i = 0; i < nums.length; i++) {
             if (lower <= sums[i] && sums[i] <= upper) {
                 total++;
             }
+            //  sums[i] - upper <= x <= sums[i] - lower
+            //  lower <= sums[i] - x <= upper
             for (Integer count : treemap.subMap(sums[i] - upper, true, sums[i] - lower, true).values()) {
                 total += count;
             }

@@ -32,7 +32,6 @@ class Solution {
     public int getRandom() {
         ListNode node = this.head;
         int point = 1, value = 0;
-        Random random = new Random();
         while (node != null) {
             if (random.nextInt(point) == 0) {
                 value = node.val;

@@ -15,7 +15,7 @@ class Solution {
         Stack<String> stack = new Stack<>();
         // P2: '\n', '\t'是一个字符而不是两个
         // P3: 先split成一行一行简单很多！
-        // P4 string.split()和string.contains()里面只能填string不能char!一般还是都用""吧就sb.append可以用char
+        // P4: string.split()和string.contains()里面只能填string不能char!一般还是都用""吧就sb.append可以用char
         String[] strs = input.split("\n");
         int ans = 0;
         int count = 0;
