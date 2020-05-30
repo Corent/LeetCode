@@ -60,9 +60,9 @@ class Solution2 {
     public String getHint(String secret, String guess) {
         int aCnt = 0, bCnt = 0, n = secret.length();
         int[] ds = new int[10], dg = new int[10];
-        for (int i = 0; i < n; i++){
+        for (int i = 0; i < n; i++) {
             int x = secret.charAt(i) - '0', y = guess.charAt(i) - '0';
-            if(x == y) aCnt++;
+            if (x == y) aCnt++;
             ds[x]++;
             dg[y]++;
         }
