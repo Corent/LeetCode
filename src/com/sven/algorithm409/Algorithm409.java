@@ -1,9 +1,8 @@
-package com.sven.algorithm408;
+package com.sven.algorithm409;
 
-import java.util.Comparator;
 import java.util.PriorityQueue;
 
-public class Algorithm408 {
+public class Algorithm409 {
 }
 
 class Solution {

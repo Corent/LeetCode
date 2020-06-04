@@ -61,23 +61,27 @@ class BSTIterator2 {
 
     public BSTIterator2(TreeNode root) {
 
-        while(root != null){
+        while (root != null) {
             stack.push(root);
             root = root.left;
         }
     }
 
-    /** @return whether we have a next smallest number */
+    /**
+     * @return whether we have a next smallest number
+     */
     public boolean hasNext() {
         return !stack.isEmpty();
     }
 
-    /** @return the next smallest number */
+    /**
+     * @return the next smallest number
+     */
     public int next() {
         TreeNode minCurrent = stack.pop();
-        if(minCurrent.right != null){
+        if (minCurrent.right != null) {
             TreeNode rightNode = minCurrent.right;
-            while(rightNode != null){
+            while (rightNode != null) {
                 stack.push(rightNode);
                 rightNode = rightNode.left;
             }

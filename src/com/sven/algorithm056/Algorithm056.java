@@ -114,3 +114,33 @@ class Solution2 {
         return ans;
     }
 }
+
+class Solution3 {
+    public int[][] merge(int[][] intervals) {
+        if (intervals == null) return null;
+        List<int[]> intervalList = new ArrayList<>();
+        Arrays.sort(intervals, (o1, o2) -> o1[0] != o2[0] ? o1[0] - o2[0] : o1[1] - o2[1]);
+        int[] current = null;
+        for (int[] interval: intervals) {
+            if (current == null) {
+                current = interval;
+                continue;
+            }
+
+            if (current[1] >= interval[0]) {
+                current[1] = Math.max(current[1], interval[1]);
+            } else {
+                intervalList.add(current);
+                current = interval;
+            }
+        }
+        if (current != null) {
+            intervalList.add(current);
+        }
+        int[][] ans = new int[intervalList.size()][2];
+        for (int i = 0; i < intervalList.size(); i++) {
+            ans[i] = intervalList.get(i);
+        }
+        return ans;
+    }
+}

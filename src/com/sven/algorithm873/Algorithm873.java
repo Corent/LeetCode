@@ -1,10 +1,5 @@
 package com.sven.algorithm873;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-
 public class Algorithm873 {
 
     public static void main(String[] args) {    // 4 14 18 32 50

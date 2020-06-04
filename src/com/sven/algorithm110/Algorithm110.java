@@ -42,3 +42,26 @@ class Solution {
         }
     }
 }
+
+class Solution2 {
+
+    private boolean balanced = true;
+
+    public boolean isBalanced(TreeNode root) {
+        if (root == null) return true;
+        if (!balanced) return false;
+        int deepLeft = deep(root.left);
+        if (!balanced) return false;
+        int deepRight = deep(root.right);
+        if (!balanced) return false;
+        return Math.abs(deepLeft - deepRight) < 2;
+    }
+
+    private int deep(TreeNode node) {
+        if (node == null) return 0;
+        int deepLeft = deep(node.left);
+        int deepRight = deep(node.right);
+        if (Math.abs(deepLeft - deepRight) > 1) balanced = false;
+        return Math.max(deepLeft, deepRight) + 1;
+    }
+}

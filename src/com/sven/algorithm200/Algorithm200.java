@@ -20,27 +20,27 @@ class Solution {
     private char[][] grid;
 
     private void bfs(int i, int j) {
-        Queue<Cell> cells = new LinkedList<>();
-        cells.add(new Cell(i, j));
+        Queue<int[]> cells = new LinkedList<>();
+        cells.add(new int[] {i, j});
         grid[i][j] = '2';
         while (!cells.isEmpty()) {
-            Cell cell = cells.poll();
-            grid[cell.x][cell.y] = '0';
-            if (cell.x - 1 >= 0 && grid[cell.x - 1][cell.y] == '1') {
-                cells.add(new Cell(cell.x - 1, cell.y));
-                grid[cell.x - 1][cell.y] = '2';
+            int[] cell = cells.poll();
+            grid[cell[0]][cell[1]] = '0';
+            if (cell[0] - 1 >= 0 && grid[cell[0] - 1][cell[1]] == '1') {
+                cells.add(new int[] {cell[0] - 1, cell[1]});
+                grid[cell[0] - 1][cell[1]] = '2';
             }
-            if (cell.y + 1 < n && grid[cell.x][cell.y + 1] == '1') {
-                cells.add(new Cell(cell.x, cell.y + 1));
-                grid[cell.x][cell.y + 1] = '2';
+            if (cell[1] + 1 < n && grid[cell[0]][cell[1] + 1] == '1') {
+                cells.add(new int[] {cell[0], cell[1] + 1});
+                grid[cell[0]][cell[1] + 1] = '2';
             }
-            if (cell.x + 1 < m && grid[cell.x + 1][cell.y] == '1') {
-                cells.add(new Cell(cell.x + 1, cell.y));
-                grid[cell.x + 1][cell.y] = '2';
+            if (cell[0] + 1 < m && grid[cell[0] + 1][cell[1]] == '1') {
+                cells.add(new int[] {cell[0] + 1, cell[1]});
+                grid[cell[0] + 1][cell[1]] = '2';
             }
-            if (cell.y - 1 >= 0 && grid[cell.x][cell.y - 1] == '1') {
-                cells.add(new Cell(cell.x, cell.y - 1));
-                grid[cell.x][cell.y - 1] = '2';
+            if (cell[1] - 1 >= 0 && grid[cell[0]][cell[1] - 1] == '1') {
+                cells.add(new int[] {cell[0], cell[1] - 1});
+                grid[cell[0]][cell[1] - 1] = '2';
             }
         }
     }
@@ -61,16 +61,5 @@ class Solution {
             }
         }
         return ans;
-    }
-
-    class Cell {
-
-        public int x;
-        public int y;
-
-        public Cell(int x, int y) {
-            this.x = x;
-            this.y = y;
-        }
     }
 }

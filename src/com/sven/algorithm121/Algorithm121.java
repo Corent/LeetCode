@@ -27,3 +27,20 @@ class Solution {
         return ans;
     }
 }
+
+/**
+ * 转换成求差分数组的最大子段和问题
+ */
+class Solution2 {
+    public int maxProfit(int[] prices) {
+        if (prices == null || prices.length < 2) return 0;
+        int[] diff = new int[prices.length - 1];
+        for (int i = 1; i < prices.length; i++) diff[i - 1] = prices[i] - prices[i - 1];
+        int dp = 0, ans = 0;
+        for (int i = 0; i < diff.length; i++) {
+            dp = dp < 0 ? diff[i] : dp + diff[i];
+            ans = Math.max(ans, dp);
+        }
+        return ans;
+    }
+}

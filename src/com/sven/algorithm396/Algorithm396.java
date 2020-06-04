@@ -15,7 +15,7 @@ class Solution {
             f += i * A[i];
         }
         int ans = f;
-        for (int i = 0; i < n; i++) {
+        for (int i = 1; i <= n; i++) {
             f = f + sum - n * A[n - i];
             ans = Math.max(ans, f);
         }

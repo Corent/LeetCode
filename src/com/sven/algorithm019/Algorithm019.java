@@ -1,6 +1,7 @@
 package com.sven.algorithm019;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Algorithm019 {
@@ -32,5 +33,26 @@ class Solution {
         else map.get(index - n - 1).next = map.get(index - n + 1);
 
         return head;
+    }
+}
+
+class Solution2 {
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        if (head == null || n < 1) return null;
+        ListNode root = new ListNode(0), node = head;
+        root.next = head;
+        while (n > 0) {
+            if (node == null) return node.next;
+            node = node.next;
+            n--;
+        }
+        ListNode pre = root, tmp = head;
+        while (node != null) {
+            node = node.next;
+            pre = tmp;
+            tmp = tmp.next;
+        }
+        pre.next = tmp.next;
+        return root.next;
     }
 }

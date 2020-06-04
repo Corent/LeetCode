@@ -20,9 +20,9 @@ class Solution {
     public int[] maxNumber(int[] nums1, int[] nums2, int k) {
         int m = nums1.length, n = nums2.length;
         int[] ans = new int[k];
-        for (int i = Math.max(0, k - n); i<= Math.min(k, m); i++) { //  两个数组分别取出 i 和 k - i 个数进行合并
+        for (int i = Math.max(0, k - n); i <= Math.min(k, m); i++) { //  两个数组分别取出 i 和 k - i 个数进行合并
             int[] next = merge(max(nums1, i), max(nums2, k - i));
-            ans = compare(ans, 0, next, 0)? ans: next;
+            ans = compare(ans, 0, next, 0) ? ans : next;
         }
         return ans;
     }
@@ -40,7 +40,7 @@ class Solution {
         int[] ans = new int[m + n];
         int i = 0, j = 0, k = 0;
         while (i < m || j < n) {
-            ans[k++] = compare(nums1, i, nums2, j)? nums1[i++]: nums2[j++];
+            ans[k++] = compare(nums1, i, nums2, j) ? nums1[i++] : nums2[j++];
         }
         return ans;
     }
@@ -51,7 +51,7 @@ class Solution {
     private int[] max(int[] nums, int k) {
         int drop = nums.length - k;
         LinkedList<Integer> list = new LinkedList<>();
-        for (int num: nums) {
+        for (int num : nums) {
             while (drop > 0 && !list.isEmpty() && list.getLast() < num) {
                 list.pollLast();
                 drop--;

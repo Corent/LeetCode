@@ -11,7 +11,7 @@ public class Algorithm347 {
 }
 
 class Solution {
-    public List<Integer> topKFrequent(int[] nums, int k) {
+    public int[] topKFrequent(int[] nums, int k) {
 
         Map<Integer, Integer> counter = new HashMap<>();
         for (int num: nums) {
@@ -19,25 +19,16 @@ class Solution {
             counter.put(num, cnt);
         }
 
-        PriorityQueue<NumCnt> maxHeap = new PriorityQueue<>((o1, o2) -> o2.cnt - o1.cnt);
+        PriorityQueue<int[]> maxHeap = new PriorityQueue<>((o1, o2) -> o2[1] - o1[1]);
         for (Map.Entry<Integer, Integer> e: counter.entrySet()) {
-            maxHeap.add(new NumCnt(e.getKey(), e.getValue()));
+            maxHeap.add(new int[] { e.getKey(), e.getValue() });
         }
 
-        List<Integer> ans = new ArrayList<>(k);
-        while (!maxHeap.isEmpty() && k-- > 0) {
-            ans.add(maxHeap.poll().num);
+        int n = Math.min(maxHeap.size(), k);
+        int[] ans = new int[n];
+        while (n > 0) {
+            ans[--n] = maxHeap.poll()[0];
         }
         return ans;
-    }
-
-    class NumCnt {
-        public int num;
-        public int cnt;
-
-        public NumCnt(int num, int cnt) {
-            this.num = num;
-            this.cnt = cnt;
-        }
     }
 }

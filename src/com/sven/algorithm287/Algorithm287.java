@@ -63,3 +63,16 @@ class Solution2 {
         return cnt;
     }
 }
+
+
+class Solution3 {
+
+    public int findDuplicate(int[] nums) {
+        for (int i = 0; i < nums.length; i++) {
+            int n = Math.abs(nums[i]);
+            if (nums[n - 1] < 0) return nums[i];
+            nums[n - 1] = -nums[n - 1];
+        }
+        return -1;
+    }
+}

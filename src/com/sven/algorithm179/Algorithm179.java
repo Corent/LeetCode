@@ -15,8 +15,8 @@ class Solution {
         Integer[] numss = new Integer[nums.length];
         for (int i = 0; i < nums.length; i++) numss[i] = nums[i];
         Arrays.sort(numss, (a, b) -> {
-            Long ab = Long.valueOf(String.valueOf(a + "" + b));
-            Long ba = Long.valueOf(String.valueOf(b + "" + a));
+            Long ab = Long.valueOf(a + "" + b);
+            Long ba = Long.valueOf(b + "" + a);
             return Long.valueOf(ba - ab).intValue();
         });
         int idx = 0;

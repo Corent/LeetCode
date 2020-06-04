@@ -1,8 +1,6 @@
 package com.sven.algorithm023;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Algorithm023 {
 }
@@ -83,6 +81,32 @@ class Solution2 {
             tmp = tmp.next;
         }
         return head.next;
+    }
+}
+
+class Solution3 {
+
+    public ListNode mergeKLists(ListNode[] lists) {
+        if (lists == null || lists.length == 0) return null;
+        if (lists.length == 1) return lists[0];
+        ListNode root = new ListNode(0);
+        PriorityQueue<ListNode> nodes = new PriorityQueue<>(Comparator.comparingInt(o -> o.val));
+        for (ListNode node: lists) {
+            if (node != null) {
+                nodes.add(node);
+            }
+        }
+        ListNode node = root;
+        while (!nodes.isEmpty()) {
+            ListNode nextNode = nodes.poll();
+            node.next = nextNode;
+            nextNode = nextNode.next;
+            node = node.next;
+            if (nextNode != null) {
+                nodes.add(nextNode);
+            }
+        }
+        return root.next;
     }
 }
 

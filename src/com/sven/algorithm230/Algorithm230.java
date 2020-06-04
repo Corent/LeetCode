@@ -25,7 +25,7 @@ class Solution {
     private void inOrder(TreeNode root) {
         if (root == null) return;
         if (root.left != null) inOrder(root.left);
-        if (++idx == k - 1) {
+        if (++idx == k) {
             ans = root.val;
             return;
         }
