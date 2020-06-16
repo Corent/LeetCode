@@ -1,6 +1,6 @@
-package com.sven.algorithm366;
+package com.sven.algorithm367;
 
-public class Algorithm366 {
+public class Algorithm367 {
 
     public static void main(String[] args) {
         System.out.println(new Solution().isPerfectSquare(16));
