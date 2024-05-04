@@ -41,8 +41,7 @@ class Solution {
                     result += digit;
                 else
                     return sign == -1 ? Integer.MIN_VALUE : Integer.MAX_VALUE;
-            }
-            else {
+            } else {
                 break;
             }
         }

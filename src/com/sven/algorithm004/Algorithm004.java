@@ -24,7 +24,7 @@ class Solution {
         if (m == 0) return nums2[k - 1]; //若第一个数组长度为0，则第二个数组中nums2[k - 1]即为所求
         if (k == 1) return Math.min(nums1[from1], nums2[from2]); // 若k = 1，则两个数组起始位置的最小值即为所求
         int pos1 = Math.min(k / 2, m); // pos1取 k/2 和 m 的最小值，from1 + pos1 - 1是第一个数组的中位数位置
-        int pos2 = k - pos1; // pos2取k - pos1，保证pos2 - pos1 = k，from2 + pos2 - 1]是第二个数组的中卫书位置
+        int pos2 = k - pos1; // pos2取k - pos1，保证pos2 - pos1 = k，from2 + pos2 - 1]是第二个数组的中位数位置
         if (nums1[from1 + pos1 - 1] < nums2[from2 + pos2 - 1]) // 如果第一个数组的中位数小于第二个数组的中位数，
                                                                 // 则第一个数组取后半部分，再和第二个数组进行比较，查找第k - pos1大的数
             return findKth(nums1, from1 + pos1, to1, nums2, from2, to2, k - pos1);

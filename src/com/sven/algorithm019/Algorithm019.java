@@ -42,7 +42,7 @@ class Solution2 {
         ListNode root = new ListNode(0), node = head;
         root.next = head;
         while (n > 0) {
-            if (node == null) return node.next;
+            if (node == null) return root.next;
             node = node.next;
             n--;
         }
