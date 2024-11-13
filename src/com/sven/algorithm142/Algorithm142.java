@@ -8,6 +8,14 @@ package com.sven.algorithm142;
  * @date: 2018/6/5
  */
 public class Algorithm142 {
+    public static void main(String[] args) {
+        ListNode node0 = new ListNode(3), node1 = new ListNode(2), node2 = new ListNode(0), node3 = new ListNode(-4);
+        node0.next = node1;
+        node1.next = node2;
+        node2.next = node3;
+        node3.next = node1;
+        new Solution().detectCycle(node0);
+    }
 }
 
 class ListNode {

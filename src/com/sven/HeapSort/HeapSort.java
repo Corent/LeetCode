@@ -1,6 +1,8 @@
 package com.sven.HeapSort;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * https://www.cnblogs.com/luomeng/p/10618709.html
@@ -8,6 +10,7 @@ import java.util.Arrays;
 public class HeapSort {
 
     public static void main(String[] args) {
+        List<String> s = new ArrayList<Object>();
         int[] nums = new int[] { 16, 7, 3, 20, 17, 8 };
         heapSort(nums);
         Arrays.stream(nums).forEach(n -> System.out.print(n + " "));

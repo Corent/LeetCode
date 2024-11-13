@@ -61,7 +61,6 @@ class Solution2 {
     private int[] candidates;
     private List<Integer> current = new ArrayList<>();
     private List<List<Integer>> ans = new ArrayList<>();
-    private Set<String> anSet = new HashSet<>();
 
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
         if (candidates == null || candidates.length == 0) return ans;

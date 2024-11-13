@@ -66,7 +66,7 @@ class Solution {
 
 /**
  * 差分数组，dp[i][j][0|1](以i结尾，j段) => dp[k][0]表示前面取了k段，但是这一段没取的k段最大和，dp[k][1]表示这一段取了的k段最大和
- * https://www.bilibili.com/video/av70645396?from=search&seid=5452797083633288841
+ * https://www.bilibili.com/video/av70645396
  */
 class Solution2 {
     public int maxProfit(int k, int[] prices) {

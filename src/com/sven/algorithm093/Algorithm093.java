@@ -41,24 +41,24 @@ class Solution {
             ip.add(s.substring(idx, idx + 1));
             restoreIpAddressesCore(s, idx + 1);
             ip.remove(ip.size() - 1);
-        }
 
-        if (idx + 1 < s.length()) {
-            String tmp = s.substring(idx, idx + 2);
-            int t = Integer.valueOf(tmp);
-            if (t >= 10 && t <= 99) {
-                ip.add(tmp);
-                restoreIpAddressesCore(s, idx + 2);
-                ip.remove(ip.size() - 1);
-            }
-
-            if (idx + 2 < s.length()) {
-                tmp = s.substring(idx, idx + 3);
-                t = Integer.valueOf(tmp);
-                if (t >= 100 && t <= 255) {
+            if (idx + 1 < s.length()) {
+                String tmp = s.substring(idx, idx + 2);
+                int t = Integer.valueOf(tmp);
+                if (t >= 10 && t <= 99) {
                     ip.add(tmp);
-                    restoreIpAddressesCore(s, idx + 3);
+                    restoreIpAddressesCore(s, idx + 2);
                     ip.remove(ip.size() - 1);
+                }
+
+                if (idx + 2 < s.length()) {
+                    tmp = s.substring(idx, idx + 3);
+                    t = Integer.valueOf(tmp);
+                    if (t >= 100 && t <= 255) {
+                        ip.add(tmp);
+                        restoreIpAddressesCore(s, idx + 3);
+                        ip.remove(ip.size() - 1);
+                    }
                 }
             }
         }

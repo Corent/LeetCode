@@ -36,7 +36,8 @@ class Solution {
 
 /**
  * O(nlog(n))
- * https://leetcode.com/problems/longest-increasing-subsequence/discuss/152065/Python-explain-the-O(nlogn)-solution-step-by-step
+ * https://www.bilibili.com/video/BV1Wf4y1y7ou
+ * list[i]表示长度为i+1的子序列，尾数的最优解
  */
 class Solution2 {
 

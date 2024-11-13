@@ -10,6 +10,7 @@ package com.sven.algorithm115;
 public class Algorithm115 {
 }
 
+// https://blog.csdn.net/laplacepoisson/article/details/124290860
 class Solution {
     public int numDistinct(String s, String t) {
         if (s == null || t == null) return 0;

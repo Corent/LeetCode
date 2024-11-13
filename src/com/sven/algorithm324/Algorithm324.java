@@ -28,7 +28,7 @@ class Solution2 {
     public void wiggleSort(int[] nums) {
         int n = nums.length, k = (n + 1) / 2;
         int[] sortedNums = Arrays.copyOf(nums, nums.length);
-        Arrays.sort(sortedNums);
+        // Arrays.sort(sortedNums);
         findKthLargest(sortedNums, 0, sortedNums.length - 1, k);
         for (int i = 0, j = n; i < nums.length; i++) {
             nums[i] = (i & 1) == 0? sortedNums[--k]: sortedNums[--j];

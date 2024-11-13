@@ -11,6 +11,10 @@ public class Algorithm273 {
  */
 class Solution {
 
+    public static void main(String[] args) {
+        System.out.println(new Solution().numberToWords(123));
+    }
+
     private String[] units = { "", "Thousand", "Million", "Billion" };
 
     private Map<Integer, String> words = new HashMap<Integer, String>() {{

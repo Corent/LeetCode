@@ -33,7 +33,7 @@ class Solution {
         int ans = map.get(s.charAt(0));
         for (int i = 1; i < s.length(); i++) {
             int pre = map.get(s.charAt(i - 1)), now = map.get(s.charAt(i));
-            if (pre < now) ans += now - pre * 2;
+            if (pre < now) ans += now - pre * 2; // - pre + now - pre
             else ans += now;
         }
         return ans;
