@@ -89,7 +89,7 @@ class Solution2 {
             wHash[idx(s.charAt(right))]++;
             if (!check()) continue;
             ans = Math.min(ans, right - left + 1);
-            while (true) {
+            while (left <= right) {
                 wHash[idx(s.charAt(left++))]--;
                 if (check()) {
                     ans = Math.min(ans, right - left + 1);
