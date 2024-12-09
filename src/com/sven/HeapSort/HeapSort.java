@@ -10,7 +10,7 @@ import java.util.List;
 public class HeapSort {
 
     public static void main(String[] args) {
-        List<String> s = new ArrayList<Object>();
+        List<String> s = new ArrayList<>();
         int[] nums = new int[] { 16, 7, 3, 20, 17, 8 };
         heapSort(nums);
         Arrays.stream(nums).forEach(n -> System.out.print(n + " "));
